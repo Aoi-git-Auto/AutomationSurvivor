@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -96,20 +94,20 @@ public class Enemy_Move : MonoBehaviour
     }
     public void Damage(float damage)
     {
-        if (!no_damage)
-        {
-            GameObject effect = Instantiate(Hitmark, transform.position, Quaternion.identity);
-            Destroy(effect, 0.1f);
-            HP -= damage;
-            no_damage = true;
-        }
+        GameObject effect = Instantiate(Hitmark, transform.position, Quaternion.identity);
+        Destroy(effect, 0.1f);
+        HP -= damage;
+    }
+    IEnumerator StopKnockBack(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        rb.velocity = Vector2.zero;        
     }
     public void NockBack(float nockback)
     {
-        Vector2 thisPos = transform.position;
-        float distination = thisPos.x - PlayerPos.x;
-        rb.velocity = new Vector2(distination * nockback, 0);
-
+        Vector2 direction = (transform.position - PlayerPos).normalized;
+        rb.velocity = direction * nockback;
+        StartCoroutine(StopKnockBack(0.5f));
     }
     void DropExp()
     {
