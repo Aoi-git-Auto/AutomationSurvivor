@@ -5675,7 +5675,7 @@ MonoBehaviour:
   statusdata1: {fileID: 11400000, guid: 4957af756b0ba0f4192ee5a8b2b2ca20, type: 2}
   statusstrong: {fileID: 11400000, guid: d1647ed99bf8f044ab21988feaa086f7, type: 2}
   StrongEnemyPrehub: {fileID: 832153090162448149, guid: 03dd2fae8a9725b41a9d8663c03f59bc, type: 3}
-  BossEnemyPrehub: {fileID: 3574093186003788493, guid: 06cc0ee5dedd2d9408ef1db9762d0769, type: 3}
+  BossEnemyPrehub: {fileID: 832153090162448149, guid: 110c07e991ffd5a4082d164e9a24aae8, type: 3}
   EnemyPrehub: {fileID: 832153090162448149, guid: e5f3589d7a440384ba409d4a1104b048, type: 3}
 --- !u!1 &841385482
 GameObject:

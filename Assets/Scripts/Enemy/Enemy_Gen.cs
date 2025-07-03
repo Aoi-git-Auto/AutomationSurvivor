@@ -45,7 +45,7 @@ public class Enemy_Gen : MonoBehaviour
             EnemyGenerate(StrongEnemyPrehub);
             overTime = 0.0f;
         }
-        if (bossTime > 100f && Boss == false)
+        if (bossTime > 10f && Boss == false)
         {
             bossTime = 0.0f;
             Boss = true;
