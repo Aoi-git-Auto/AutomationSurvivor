@@ -116,7 +116,7 @@ public class Enemy_Move : MonoBehaviour
             Instantiate(EXP_prehub, this.transform.position, this.transform.rotation);
         }
     }
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
