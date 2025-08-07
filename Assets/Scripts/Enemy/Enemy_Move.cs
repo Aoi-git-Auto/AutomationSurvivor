@@ -61,7 +61,7 @@ public class Enemy_Move : MonoBehaviour
         if (HP <= 0)
         {
             clearbool = false;
-            Player.gameObject.GetComponent<PlayerHP>().Heal(20);
+            Player.gameObject.GetComponent<PlayerController>().Heal(20);
             GameObject effect = Instantiate(Hitmark, transform.position, Quaternion.identity);
             LifeTimeCount += Time.deltaTime;
             DropExp();
@@ -120,7 +120,7 @@ public class Enemy_Move : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.GetComponent<PlayerHP>().Damage(statusdata.ATK);
+            other.GetComponent<IDamageable>().Damage(statusdata.ATK);
         }
     }
 }

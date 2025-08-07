@@ -460,6 +460,9 @@ MonoBehaviour:
   hpslider: {fileID: 1024482580}
   GameOverUI: {fileID: 1809103332}
   Player: {fileID: 194584434}
+  currentTime: 0
+  no_damage: 0
+  HP: 0
 --- !u!114 &194584443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,10 +476,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusdata: {fileID: 11400000, guid: c7608095ef1031b4abb0f1546fe77fa5, type: 2}
-  spriteRenderer: {fileID: 194584437}
   normalATK: {fileID: 466373778}
-  imageIdle: {fileID: -1792113787, guid: 8db47ce4c6cac6e428da37d353ce185b, type: 3}
-  imagenomalATK: {fileID: -806271420, guid: 2160a3195b8c80241ac8a60dba37de1c, type: 3}
+  imageIdle: {fileID: 21300000, guid: 374b282d1e6a92b40894a314f48f631a, type: 3}
+  imagenomalATK: {fileID: -1792113787, guid: 8db47ce4c6cac6e428da37d353ce185b, type: 3}
+  hpSlider: {fileID: 1024482580}
 --- !u!1 &420955209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusdata: {fileID: 11400000, guid: c7608095ef1031b4abb0f1546fe77fa5, type: 2}
   GameClearUI: {fileID: 1137291146}
+  GameOverUI: {fileID: 1809103332}
   PlayerDefaultATK: 0
 --- !u!1 &677262185
 GameObject:
