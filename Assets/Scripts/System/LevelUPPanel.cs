@@ -10,7 +10,6 @@ public class LevelUPPanel : MonoBehaviour
     [SerializeField] GameObject LevelUPUI;
     [SerializeField] GameObject drone;
     [SerializeField] GameObject anpoule;
-    [SerializeField] StatusData statusdata;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +29,7 @@ public class LevelUPPanel : MonoBehaviour
             var Drone = Instantiate(drone,transform.position,transform.rotation);
             break;
             case(1):
-            Player_defATK.DEF_ATK.PlayerATK++;
+            
             break;
             case(2):
             var Anpoule = Instantiate(anpoule,transform.position,transform.rotation);

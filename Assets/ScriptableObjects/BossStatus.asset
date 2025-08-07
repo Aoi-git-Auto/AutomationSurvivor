@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BossStatus
   m_EditorClassIdentifier: 
   MAXHP: 100
-  ATK: 15
+  ATK: 20
   SPEED: 1
   NockBack: 2
   SPAN: 1
   EXP: 100
-  BOSS: 1
+  BOSS: 0

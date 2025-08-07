@@ -8,8 +8,6 @@ public class GMScript : MonoBehaviour
 {
     public static GMScript instance;
     [SerializeField] StatusData statusdata;
-    [SerializeField] GameObject GameClearUI;
-    [SerializeField] GameObject GameOverUI;
     public float PlayerDefaultATK;
     // Start is called before the first frame update
     void Awake()
@@ -27,18 +25,10 @@ public class GMScript : MonoBehaviour
     {
         Time.timeScale = 1;
         PlayerDefaultATK = statusdata.ATK;
-        GameClearUI.GetComponent<Canvas>().enabled = false;
-        GameOverUI.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
     public void OnRetry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameScene");
         Time.timeScale = 1;
     }
     public void OnFinish()
@@ -46,9 +36,12 @@ public class GMScript : MonoBehaviour
         SceneManager.LoadScene("StartScene");
         Time.timeScale = 1;
     }
-    public void gameOver()
+    public void GameOver()
     {
-        GameOverUI.SetActive(true);
-        Time.timeScale = 0;
+        SceneManager.LoadScene("GameOverScene");
+    }
+    public void GameClear()
+    {
+        SceneManager.LoadScene("GameClearScene");
     }
 }

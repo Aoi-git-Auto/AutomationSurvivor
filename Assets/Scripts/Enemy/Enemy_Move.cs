@@ -75,15 +75,7 @@ public class Enemy_Move : MonoBehaviour
         if (statusdata.BOSS == true && clearbool == false)
         {
             clearbool = true;
-            GameClearUI = GameObject.Find("GameClearUI");
-            GameClearUI.GetComponent<Canvas>().enabled = true;
-            Time.timeScale = 0;
-            var conffe = Instantiate(conffeti, this.transform.position, transform.rotation);
-            StartCoroutine("GameClearFunc");
-            for (int i = 0; i < 100; i++)
-            {
-                Instantiate(conffeti, this.transform.position, transform.rotation);
-            }
+            GMScript.instance.GameClear();
         }
     }
     IEnumerator GameClearFunc()

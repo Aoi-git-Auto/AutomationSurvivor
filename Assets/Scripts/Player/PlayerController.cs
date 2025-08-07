@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour,IDamageable
 {
-   [SerializeField] StatusData statusdata;
+    [SerializeField] StatusData statusdata;
+    [SerializeField]
     private SpriteRenderer spriteATK;
     private SpriteRenderer spritePlayer;
     private float currentTime = 0.0f;
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour,IDamageable
     public void Die()
     {
         spritePlayer.enabled = false;
-        GMScript.instance.gameOver();
+        GMScript.instance.GameOver();
     }
 
     private IEnumerator N_ATKswitch()
