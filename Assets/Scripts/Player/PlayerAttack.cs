@@ -21,12 +21,13 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        attackPos = transform.parent.gameObject.transform.position;
+        attackPos = transform.parent.position;
         currentTime += Time.deltaTime;
         if (currentTime >= 2.0f)
         {
             currentTime = 0f;
             var bat = Instantiate(attackObj, transform.position, Quaternion.identity);
+            bat.transform.SetParent(transform.parent);
             bat.GetComponent<BatAttack>().SetStatus(attack, nockback, attackPos);
         }
     }
