@@ -8,12 +8,14 @@ public class PlayerAttack : MonoBehaviour
     private GameObject attackObj;
     [SerializeField] StatusData statusdata;
     private float attack;
+    private float nockback;
     private float currentTime = 0f;
     private Vector2 attackPos;
     // Start is called before the first frame update
     void Start()
     {
-        attack = statusdata.ATK;  
+        attack = statusdata.ATK;
+        nockback = statusdata.NockBack;
     }
 
     // Update is called once per frame
@@ -24,9 +26,8 @@ public class PlayerAttack : MonoBehaviour
         if (currentTime >= 2.0f)
         {
             currentTime = 0f;
-            Instantiate(attackObj, transform.position, Quaternion.identity);
-            attackObj.GetComponent<BatAttack>().SetAttack(attack);
-            attackObj.GetComponent<BatAttack>().SetPos(attackPos);
+            var bat = Instantiate(attackObj, transform.position, Quaternion.identity);
+            bat.GetComponent<BatAttack>().SetStatus(attack, nockback, attackPos);
         }
     }
 }
