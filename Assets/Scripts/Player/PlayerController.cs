@@ -6,14 +6,9 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour,IDamageable
 {
     [SerializeField] StatusData statusdata;
-    [SerializeField]
-    private SpriteRenderer spriteATK;
     private SpriteRenderer spritePlayer;
     private float currentTime = 0.0f;
     private float damageTime = 0.0f;
-    [SerializeField] GameObject normalATK;
-    [SerializeField] Sprite imageIdle;
-    [SerializeField] Sprite imagenomalATK;
     [SerializeField] Slider hpSlider;
     private Rigidbody2D rb;
     private float currentHP;
@@ -29,9 +24,7 @@ public class PlayerController : MonoBehaviour,IDamageable
             hpSlider.value = statusdata.MAXHP;
         }
         rb = GetComponent<Rigidbody2D>();
-        spriteATK.sprite = imageIdle;
         spritePlayer = GetComponent<SpriteRenderer>();
-        normalATK.GetComponent<BoxCollider2D>().enabled = false;
         currentHP = statusdata.MAXHP;
         invincibility = false;
         isFlashing = false;
@@ -52,13 +45,6 @@ public class PlayerController : MonoBehaviour,IDamageable
                 damageTime = 0.0f;
                 invincibility = false;
             }
-        }
-        if (currentTime > statusdata.SPAN)
-        {
-            spriteATK.sprite = imagenomalATK;
-            normalATK.GetComponent<BoxCollider2D>().enabled = true;
-            StartCoroutine(N_ATKswitch());
-            currentTime = 0.0f;
         }
     }
     void FixedUpdate()
@@ -103,13 +89,6 @@ public class PlayerController : MonoBehaviour,IDamageable
     {
         spritePlayer.enabled = false;
         GMScript.instance.GameOver();
-    }
-
-    private IEnumerator N_ATKswitch()
-    {
-        yield return new WaitForSeconds(5);
-        spriteATK.sprite = imageIdle;
-        normalATK.GetComponent<BoxCollider2D>().enabled = false;
     }
     private IEnumerator flashSprite()
     {
