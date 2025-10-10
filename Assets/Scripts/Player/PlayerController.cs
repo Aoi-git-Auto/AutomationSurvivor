@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour,IDamageable
         {
             currentHP -= damage;
             invincibility = true;
-            if (hpSlider != true)
+            if (hpSlider == true)
             {
                 hpSlider.value = currentHP;
             }
