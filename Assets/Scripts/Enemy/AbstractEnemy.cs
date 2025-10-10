@@ -77,17 +77,17 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     {
         Vector2 directrion = (transform.position - playerPos).normalized;
         rb.velocity = directrion * knockBack;
-        StopKnockBack(0.5f);
+        StartCoroutine(StopKnockBack(0.5f));
     }
 
     protected virtual void FixedUpdate()
     {
+        playerPos = player.transform.position;
         Move();
     }
 
-    protected void OnTrrigerStay2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        playerPos = player.transform.position;
         Hit(other.gameObject);
     }
 }
