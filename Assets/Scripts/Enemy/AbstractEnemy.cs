@@ -8,7 +8,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected EnemyStatus enemyStatus;
     [SerializeField]
     protected GameObject expPrehub;
-    protected float EnemyATK;
+    protected float enemyATK;
     protected float MaxHP;
     protected Element element;
     protected int enemyEXP;
@@ -26,7 +26,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     // Start is called before the first frame update
     protected void Start()
     {
-        EnemyATK = enemyStatus.ATK;
+        enemyATK = enemyStatus.ATK;
         MaxHP = enemyStatus.MAXHP;
         element = enemyStatus.ELEMENT;
         enemyEXP = enemyStatus.EXP;
@@ -35,15 +35,22 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         playerPos = player.transform.position;
     }
 
-    public abstract void Damage(float damage);
-    public abstract void KnockBack(float knockBack);
     protected abstract void Move();
-    protected abstract void Hit(GameObject target);
+    public void Damage(float damage)
+    {
+        MaxHP -= damage;
+        if (MaxHP <= 0)
+        {
+            Die();
+        }
+    }
+
     protected void Die()
     {
         Destroy(this.gameObject);
         DropEXP();
     }
+
     protected void DropEXP()
     {
         for (int i = 0; i < enemyEXP; i++)
@@ -51,13 +58,34 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
             Instantiate(expPrehub, this.transform.position, this.transform.rotation);
         }
     }
+    
+    protected void Hit(GameObject target)
+    {
+        if(target.CompareTag("Player"))
+        {
+            target.GetComponent<IDamageable>().Damage(enemyATK);
+        }
+    }
+    
+    protected IEnumerator StopKnockBack(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        rb.velocity = Vector2.zero;
+    }
+
+    public void KnockBack(float knockBack)
+    {
+        Vector2 directrion = (transform.position - playerPos).normalized;
+        rb.velocity = directrion * knockBack;
+        StopKnockBack(0.5f);
+    }
 
     protected virtual void FixedUpdate()
     {
         Move();
     }
 
-    protected void OnTrrigerEnter2D(Collider2D other)
+    protected void OnTrrigerStay2D(Collider2D other)
     {
         Hit(other.gameObject);
     }
