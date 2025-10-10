@@ -39,7 +39,11 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     public abstract void KnockBack(float knockBack);
     protected abstract void Move();
     protected abstract void Hit(GameObject target);
-    protected abstract void Die();
+    protected void Die()
+    {
+        Destroy(this.gameObject);
+        DropEXP();
+    }
     protected void DropEXP()
     {
         for (int i = 0; i < enemyEXP; i++)
