@@ -8,7 +8,6 @@ public class NormalEnemy : AbstractEnemy
     private Vector3 direction;
     protected override void Move()
     {
-        playerPos = player.transform.position;
         transform.position = Vector2.MoveTowards(transform.position, playerPos, speed * Time.deltaTime);
         diff.x = playerPos.x - this.transform.position.x;
         if (diff.x > 0)

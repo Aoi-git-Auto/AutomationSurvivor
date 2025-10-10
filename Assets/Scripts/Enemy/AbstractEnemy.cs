@@ -87,6 +87,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
 
     protected void OnTrrigerStay2D(Collider2D other)
     {
+        playerPos = player.transform.position;
         Hit(other.gameObject);
     }
 }
