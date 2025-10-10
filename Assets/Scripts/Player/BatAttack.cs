@@ -5,7 +5,7 @@ using UnityEngine;
 public class BatAttack : MonoBehaviour
 {
     private float damage;
-    private float nockback;
+    private float knockback;
 
     void Start()
     {
@@ -15,15 +15,15 @@ public class BatAttack : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy_Move>().Damage(damage);
-            other.gameObject.GetComponent<Enemy_Move>().NockBack(nockback);
+            other.GetComponent<IEnemy>().Damage(damage);
+            other.gameObject.GetComponent<IEnemy>().KnockBack(knockback);
         }
     }
 
     public void SetStatus(float atk, float force, Vector2 currentPos)
     {
         damage = atk;
-        nockback = force;
+        knockback = force;
         transform.position = currentPos;
     }
 }
