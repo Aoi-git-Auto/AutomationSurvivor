@@ -8,6 +8,8 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected EnemyStatus enemyStatus;
     [SerializeField]
     protected GameObject expPrehub;
+    [SerializeField]
+    protected GameObject hitEffect;
     protected float enemyATK;
     protected float MaxHP;
     protected Element element;
@@ -38,6 +40,8 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected abstract void Move();
     public void Damage(float damage)
     {
+        var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 0.1f);
         MaxHP -= damage;
         if (MaxHP <= 0)
         {
