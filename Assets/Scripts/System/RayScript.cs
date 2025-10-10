@@ -36,10 +36,10 @@ public class RayScript : MonoBehaviour
         }
     }
     void Hittarget(GameObject enemy){
-        var enemyscript = enemy.GetComponent<Enemy_Move>();
+        var enemyscript = enemy.GetComponent<IEnemy>();
         if(enemyscript != null){
             enemyscript.Damage(statusdata.ATK);
-            enemyscript.NockBack(statusdata.NockBack);
+            enemyscript.KnockBack(statusdata.NockBack);
         }
         Destroy(gameObject);
     }
