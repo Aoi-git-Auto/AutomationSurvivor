@@ -17,8 +17,8 @@ public class DamageZone : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.tag == "Enemy"){
-            other.gameObject.GetComponent<Enemy_Move>().Damage(0.1f);
-            other.gameObject.GetComponent<Enemy_Move>().NockBack(1f);
+            other.gameObject.GetComponent<IEnemy>().Damage(0.1f);
+            other.gameObject.GetComponent<IEnemy>().KnockBack(1f);
         }
     }
     IEnumerator SelfDestroy(){

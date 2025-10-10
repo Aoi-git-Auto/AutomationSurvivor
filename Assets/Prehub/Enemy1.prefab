@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5426088430154966997}
   - component: {fileID: 6911957936511093000}
   - component: {fileID: 2523996551791631871}
-  - component: {fileID: 2600295684003221445}
   - component: {fileID: 230800326678042661}
+  - component: {fileID: -4696991791411137239}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -114,26 +114,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2600295684003221445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832153090162448149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a61e65b00e1a3948ae16d78dd103257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statusdata: {fileID: 11400000, guid: 4957af756b0ba0f4192ee5a8b2b2ca20, type: 2}
-  Hitmark: {fileID: 6756226923323038359, guid: 28212569ef39298468139300f055fcae, type: 3}
-  EXP_prehub: {fileID: 2021388790842283694, guid: d5307df2c0cf10f409f25a8f657ae3b1, type: 3}
-  chest_prehub: {fileID: 0}
-  once: 0
-  clearbool: 0
-  conffeti: {fileID: 2021388790842283694, guid: ca420e59c5af89a4c8f2f8ab2c662997, type: 3}
-  GameClearUI: {fileID: 0}
 --- !u!61 &230800326678042661
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,3 +159,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4284074, y: 1.1326537}
   m_EdgeRadius: 0
+--- !u!114 &-4696991791411137239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832153090162448149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327630b10b58ebc4dbe2af76343461ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStatus: {fileID: 11400000, guid: 88dc55aaf65e56049a0cd41ec11ad17f, type: 2}
+  expPrehub: {fileID: 2021388790842283694, guid: d5307df2c0cf10f409f25a8f657ae3b1, type: 3}
+  hitEffect: {fileID: 6756226923323038359, guid: 28212569ef39298468139300f055fcae, type: 3}
