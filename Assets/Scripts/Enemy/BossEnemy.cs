@@ -8,7 +8,24 @@ public class BossEnemy : AbstractEnemy
     private GameObject hpBar;
     private Vector3 diff;
     private Vector3 direction;
-    
+    private BossHPBarContoroller bar;
+
+    protected new void Start()
+    {
+        base.Start();
+        GameObject canvas = GameObject.Find("Canvas");
+
+        var hp = Instantiate(hpBar, canvas.transform);
+        bar = hp.GetComponent<BossHPBarContoroller>();
+
+        bar.InitializeHPbar(MaxHP);
+    }
+
+    private void Update()
+    {
+        bar.UpdateHP(MaxHP);
+    }
+
     protected override void Move()
     {
         transform.position = Vector2.MoveTowards(transform.position, playerPos, speed * Time.deltaTime);
