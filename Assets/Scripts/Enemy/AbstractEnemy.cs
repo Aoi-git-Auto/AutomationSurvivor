@@ -12,6 +12,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected GameObject hitEffect;
     protected float enemyATK;
     protected float MaxHP;
+    protected float currentHP;
     protected Element element;
     protected int enemyEXP;
     protected float speed;
@@ -30,6 +31,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     {
         enemyATK = enemyStatus.ATK;
         MaxHP = enemyStatus.MAXHP;
+        currentHP = MaxHP;
         element = enemyStatus.ELEMENT;
         enemyEXP = enemyStatus.EXP;
         speed = enemyStatus.SPEED;
@@ -38,16 +40,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     }
 
     protected abstract void Move();
-    public void Damage(float damage)
-    {
-        var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 0.1f);
-        MaxHP -= damage;
-        if (MaxHP <= 0)
-        {
-            Die();
-        }
-    }
+    public abstract void Damage(float damage);
 
     protected void Die()
     {

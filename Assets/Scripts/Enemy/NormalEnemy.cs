@@ -6,6 +6,17 @@ public class NormalEnemy : AbstractEnemy
 {
     private Vector3 diff;
     private Vector3 direction;
+
+    public override void Damage(float damage)
+    {
+        var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 0.1f);
+        currentHP -= damage;
+        if(currentHP <= 0)
+        {
+            Die();
+        }
+    }
     protected override void Move()
     {
         transform.position = Vector2.MoveTowards(transform.position, playerPos, speed * Time.deltaTime);

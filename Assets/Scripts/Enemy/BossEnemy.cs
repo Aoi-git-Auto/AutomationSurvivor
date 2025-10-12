@@ -9,21 +9,30 @@ public class BossEnemy : AbstractEnemy
     private Vector3 diff;
     private Vector3 direction;
     private BossHPBarContoroller bar;
+    private GameObject hp;
 
     protected new void Start()
     {
         base.Start();
-        GameObject canvas = GameObject.Find("Canvas");
+        GameObject canvas = GameObject.Find("UICanvas");
 
-        var hp = Instantiate(hpBar, canvas.transform);
+        hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
 
         bar.InitializeHPbar(MaxHP);
     }
-
-    private void Update()
+    
+    public override void Damage(float damage)
     {
-        bar.UpdateHP(MaxHP);
+        var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 0.1f);
+        currentHP -= damage;
+        bar.UpdateHP(currentHP);
+        if(currentHP <= 0)
+        {
+            Destroy(hp);
+            Die();
+        }
     }
 
     protected override void Move()
