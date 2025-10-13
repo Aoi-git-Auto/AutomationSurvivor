@@ -16,5 +16,6 @@ public class EnemyStatus : ScriptableObject
     public float SPEED;
     public float SPAN;
     public int EXP;
+    public int SCORE;
     public Element ELEMENT;
 }

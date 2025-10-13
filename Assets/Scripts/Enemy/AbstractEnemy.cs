@@ -16,10 +16,13 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected Element element;
     protected int enemyEXP;
     protected float speed;
+    protected int score;
     protected Rigidbody2D rb;
 
     protected GameObject player;
     protected Vector3 playerPos;
+
+    private GameObject scoreManager;
 
     protected void Awake()
     {
@@ -35,7 +38,9 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         element = enemyStatus.ELEMENT;
         enemyEXP = enemyStatus.EXP;
         speed = enemyStatus.SPEED;
+        score = enemyStatus.SCORE;
         player = GameObject.FindGameObjectWithTag("Player");
+        scoreManager = GameObject.Find("ScoreManager");
         playerPos = player.transform.position;
     }
 
@@ -45,6 +50,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected void Die()
     {
         Destroy(this.gameObject);
+        scoreManager.GetComponent<ScoreManager>().AddScore(score);
         DropEXP();
     }
 

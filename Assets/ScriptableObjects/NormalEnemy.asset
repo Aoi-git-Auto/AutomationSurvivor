@@ -17,4 +17,5 @@ MonoBehaviour:
   SPEED: 0.5
   SPAN: 3
   EXP: 4
+  SCORE: 100
   ELEMENT: 0
