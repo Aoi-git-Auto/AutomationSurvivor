@@ -8,7 +8,6 @@ public class GMScript : MonoBehaviour
 {
     public static GMScript instance;
     [SerializeField] StatusData statusdata;
-    [SerializeField]
     private Text timerText;
     public float PlayerDefaultATK;
     public float currentTime = 10f;
@@ -26,44 +25,19 @@ public class GMScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    void Start()
-    {
-        Time.timeScale = 1;
-        PlayerDefaultATK = statusdata.ATK;
-    }
-
     void Update()
     {
-        Debug.Log(inGame);
-        if (inGame)
+        if (inGame && timerText != null)
         {
+            timerText.text = $"{(int)currentTime}";
             currentTime -= Time.deltaTime;
-            Debug.Log("残り時間は"+$"{currentTime}");
+            timerText.text = $"{(int)currentTime}";
             if(currentTime <= 0)
             {
                 GameClear();
             }
         }
     }
-
-    /*public void OnGame()
-    {
-        inGame = true;
-        currentTime = 10f;
-        SceneManager.LoadScene("GameScene");
-    }
-    public void OnRetry()
-    {
-
-        SceneManager.LoadScene("GameScene");
-        Time.timeScale = 1;
-    }
-    public void OnFinish()
-    {
-        inGame = false;
-        SceneManager.LoadScene("StartScene");
-        Time.timeScale = 1;
-    }*/
     public void GameOver()
     {
         inGame = false;
@@ -73,5 +47,10 @@ public class GMScript : MonoBehaviour
     {
         inGame = false;
         SceneManager.LoadScene("GameClearScene");
+    }
+
+    public void GetTimerText(Text t)
+    {
+        timerText = t;
     }
 }
