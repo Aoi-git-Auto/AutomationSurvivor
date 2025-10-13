@@ -8,8 +8,11 @@ public class GMScript : MonoBehaviour
 {
     public static GMScript instance;
     [SerializeField] StatusData statusdata;
+    [SerializeField]
+    private Text timerText;
     public float PlayerDefaultATK;
-    private bool inGame;
+    public float currentTime = 10f;
+    public bool inGame;
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,13 +32,29 @@ public class GMScript : MonoBehaviour
         PlayerDefaultATK = statusdata.ATK;
     }
 
-    public void OnGame()
+    void Update()
+    {
+        Debug.Log(inGame);
+        if (inGame)
+        {
+            currentTime -= Time.deltaTime;
+            Debug.Log("残り時間は"+$"{currentTime}");
+            if(currentTime <= 0)
+            {
+                GameClear();
+            }
+        }
+    }
+
+    /*public void OnGame()
     {
         inGame = true;
+        currentTime = 10f;
         SceneManager.LoadScene("GameScene");
     }
     public void OnRetry()
     {
+
         SceneManager.LoadScene("GameScene");
         Time.timeScale = 1;
     }
@@ -44,13 +63,15 @@ public class GMScript : MonoBehaviour
         inGame = false;
         SceneManager.LoadScene("StartScene");
         Time.timeScale = 1;
-    }
+    }*/
     public void GameOver()
     {
+        inGame = false;
         SceneManager.LoadScene("GameOverScene");
     }
     public void GameClear()
     {
+        inGame = false;
         SceneManager.LoadScene("GameClearScene");
     }
 }
