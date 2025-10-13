@@ -9,12 +9,14 @@ public class GMScript : MonoBehaviour
     public static GMScript instance;
     [SerializeField] StatusData statusdata;
     public float PlayerDefaultATK;
+    private bool inGame;
     // Start is called before the first frame update
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -26,6 +28,12 @@ public class GMScript : MonoBehaviour
         Time.timeScale = 1;
         PlayerDefaultATK = statusdata.ATK;
     }
+
+    public void OnGame()
+    {
+        inGame = true;
+        SceneManager.LoadScene("GameScene");
+    }
     public void OnRetry()
     {
         SceneManager.LoadScene("GameScene");
@@ -33,6 +41,7 @@ public class GMScript : MonoBehaviour
     }
     public void OnFinish()
     {
+        inGame = false;
         SceneManager.LoadScene("StartScene");
         Time.timeScale = 1;
     }

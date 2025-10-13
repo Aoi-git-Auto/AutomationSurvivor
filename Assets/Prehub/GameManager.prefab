@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8009819884101980441}
-  - component: {fileID: 9176355502316871429}
   - component: {fileID: 3101523099552060466}
   m_Layer: 0
   m_Name: GameManager
@@ -33,23 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9176355502316871429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7829293662914966789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c149520c159e3d64a993407073cceb1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statusdata: {fileID: 11400000, guid: c7608095ef1031b4abb0f1546fe77fa5, type: 2}
-  DronePrehub: {fileID: 4368284280371630255, guid: 843fe6b787dc78b4fae93b4f2081a0bb, type: 3}
-  AnpoulePrehub: {fileID: 2049877894856953199, guid: 609a636de260b2d48ac95481d7f621c3, type: 3}
-  LevelUPUI: {fileID: 0}
-  itemImage: {fileID: 0}
 --- !u!114 &3101523099552060466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusdata: {fileID: 11400000, guid: c7608095ef1031b4abb0f1546fe77fa5, type: 2}
-  GameClearUI: {fileID: 0}
-  GameOverUI: {fileID: 0}
   PlayerDefaultATK: 0
