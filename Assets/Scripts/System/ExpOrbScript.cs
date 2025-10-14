@@ -1,29 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ExpOrbScript : MonoBehaviour
 {
-    public int EXP;
-    int Exp;
-    // Start is called before the first frame update
+    private int Exp;
+    [SerializeField]
+    private GameObject ExpManager;
+
     void Start()
     {
-        
+        Destroy(this.gameObject, 10f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetExpAmount(int exp)
     {
-        
+        Exp = exp;
     }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player"){
-            Exp++;
-            EXPManager.instance.ExpBarDraw();
-            Destroy(this.gameObject,0.3f);
+        if (other.gameObject.tag == "Player")
+        {
+            ExpManager.GetComponent<EXPManager>().AddEXP(Exp);
+            Destroy(this.gameObject, 0.3f);
         }
     }
 }
