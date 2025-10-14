@@ -56,10 +56,8 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
 
     protected void DropEXP()
     {
-        for (int i = 0; i < enemyEXP; i++)
-        {
-            Instantiate(expPrehub, this.transform.position, this.transform.rotation);
-        }
+        var exp = Instantiate(expPrehub, this.transform.position, this.transform.rotation);
+        exp.GetComponent<ExpOrbScript>().GetExpAmount(enemyEXP);
     }
     
     protected void Hit(GameObject target)

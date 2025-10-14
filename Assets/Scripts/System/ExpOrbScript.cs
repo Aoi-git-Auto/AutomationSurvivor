@@ -5,11 +5,11 @@ using UnityEngine;
 public class ExpOrbScript : MonoBehaviour
 {
     private int Exp;
-    [SerializeField]
     private GameObject ExpManager;
 
     void Start()
     {
+        ExpManager = GameObject.Find("ExpManager");
         Destroy(this.gameObject, 10f);
     }
 

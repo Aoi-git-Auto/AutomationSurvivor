@@ -10,8 +10,13 @@ public class EXPManager : MonoBehaviour
     private GameObject LevelUppanelUI;
     [SerializeField] 
     private Text LevelText;
-    [SerializeField] 
+    [SerializeField]
     private Text LevelUpText;
+    [SerializeField]
+    private Slider EXPbar;
+    [SerializeField]
+    private List<GameObject> itemPanels = new List<GameObject>();
+
     private int currentExp;
     private int currentLv;
     private int NeedExp;
@@ -19,8 +24,6 @@ public class EXPManager : MonoBehaviour
     private float growth = 1.2f;
     [SerializeField]
     private int baseExp = 100;
-    private Slider EXPbar;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,8 @@ public class EXPManager : MonoBehaviour
         currentLv = 1;
         NeedExp = baseExp * (int)Mathf.Pow(growth, currentLv - 1);
         LevelText.text = "Level" + currentLv.ToString();
+        LevelUpText.enabled = false;
+        LevelUppanelUI.SetActive(false);
         if (EXPbar != null)
         {
             EXPbar.maxValue = NeedExp;
@@ -50,6 +55,7 @@ public class EXPManager : MonoBehaviour
     public void AddEXP(int get)
     {
         currentExp += get;
+        EXPbar.value = currentExp;
         if(currentExp >= NeedExp)
         {
             currentLv++;
