@@ -14,6 +14,7 @@ public class EXPManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> itemPanels = new List<GameObject>();
 
+    private List<GameObject> keepPanels = new List<GameObject>();
     private int currentExp;
     private int currentLv;
     private int NeedExp;
@@ -30,7 +31,7 @@ public class EXPManager : MonoBehaviour
         currentExp = 0;
         currentLv = 1;
         NeedExp = baseExp * (int)Mathf.Pow(growth, currentLv - 1);
-        LevelText.text = "Level" + currentLv.ToString();
+        LevelText.text = "Level " + currentLv.ToString();
         LevelUpText.enabled = false;
         if (EXPbar != null)
         {
@@ -48,25 +49,37 @@ public class EXPManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         LevelUpText.enabled = false;
         Time.timeScale = 0;
-        foreach(GameObject panel in itemPanels)
+        foreach (GameObject panel in itemPanels)
         {
-            Instantiate(panel, canvas.transform);
+            var panelPrehub = Instantiate(panel, canvas.transform);
+            keepPanels.Add(panelPrehub);
+            ItemPanel item = panelPrehub.GetComponent<ItemPanel>();
+            item.OnSelected += ClosePanel;
         }
     }
-    
+
     public void AddEXP(int get)
     {
         currentExp += get;
         EXPbar.value = currentExp;
-        if(currentExp >= NeedExp)
+        if (currentExp >= NeedExp)
         {
             currentLv++;
             currentExp -= NeedExp;
             NeedExp = baseExp * (int)Mathf.Pow(growth, currentLv - 1);
             EXPbar.maxValue = NeedExp;
             EXPbar.value = currentExp;
-            LevelText.text = "Level "+currentLv.ToString();
+            LevelText.text = "Level " + currentLv.ToString();
             StartCoroutine(LevelUP());
         }
+    }
+    
+    private void ClosePanel()
+    {
+        foreach (GameObject panel in keepPanels)
+        {
+            Destroy(panel);
+        }
+        Time.timeScale = 1;
     }
 }
