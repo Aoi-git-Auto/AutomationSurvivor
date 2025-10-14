@@ -5934,7 +5934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f1d8ffda798e446b6f507ccc89f52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelUppanelUI: {fileID: 1634491491}
   LevelText: {fileID: 747114961}
   LevelUpText: {fileID: 841385484}
   EXPbar: {fileID: 1627067583}
@@ -5942,6 +5941,7 @@ MonoBehaviour:
   - {fileID: 7421697971329006253, guid: 3ba251be6e8f66b4f85a417583c4144f, type: 3}
   - {fileID: 3879735067896050027, guid: a20cbc2944550d94d82bab5a0ade1a26, type: 3}
   - {fileID: 3186515164946697960, guid: 69b6f23d8f4fc0446a2968e129931aa5, type: 3}
+  canvas: {fileID: 1025494783}
   growth: 1.2
   baseExp: 100
 --- !u!4 &1097144902
