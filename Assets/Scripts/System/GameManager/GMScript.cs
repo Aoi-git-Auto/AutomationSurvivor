@@ -10,7 +10,7 @@ public class GMScript : MonoBehaviour
     [SerializeField] StatusData statusdata;
     private Text timerText;
     public float PlayerDefaultATK;
-    public float currentTime = 10f;
+    public float currentTime = 300f;
     public bool inGame;
     // Start is called before the first frame update
     void Awake()
