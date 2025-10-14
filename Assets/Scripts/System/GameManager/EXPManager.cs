@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class EXPManager : MonoBehaviour
 {
@@ -46,9 +47,8 @@ public class EXPManager : MonoBehaviour
         EXPbar.maxValue = NeedExp;
         EXPbar.value = currentExp;
         LevelUpText.enabled = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         LevelUpText.enabled = false;
-        Time.timeScale = 0;
         foreach (GameObject panel in itemPanels)
         {
             var panelPrehub = Instantiate(panel, canvas.transform);
@@ -56,6 +56,7 @@ public class EXPManager : MonoBehaviour
             ItemPanel item = panelPrehub.GetComponent<ItemPanel>();
             item.OnSelected += ClosePanel;
         }
+        Time.timeScale = 0;
     }
 
     public void AddEXP(int get)
@@ -78,7 +79,15 @@ public class EXPManager : MonoBehaviour
     {
         foreach (GameObject panel in keepPanels)
         {
-            Destroy(panel);
+            Sequence seq = DOTween.Sequence();
+            seq.Append(panel.transform.DOScale(1.05f, 0.1f).SetEase(Ease.OutBack))
+            .Append(panel.transform.DOScale(0f, 0.3f).SetEase(Ease.InBack))
+            .SetLink(panel)
+            .OnComplete(() => {
+                Destroy(panel);
+                keepPanels.Remove(panel);
+            })
+            .SetUpdate(true);
         }
         Time.timeScale = 1;
     }

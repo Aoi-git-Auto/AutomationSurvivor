@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ItemPanel : MonoBehaviour
 {
@@ -15,7 +16,12 @@ public class ItemPanel : MonoBehaviour
 
     private ItemStatus element;
     public Action OnSelected;
+    private RectTransform rectTransform;
 
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +29,15 @@ public class ItemPanel : MonoBehaviour
         itemName.text = element.NAME;
         itemInfo.text = element.INFO;
         itemImage.sprite = element.SPRITE;
+
+        Vector2 endPos = rectTransform.anchoredPosition;
+
+        rectTransform.anchoredPosition = endPos + new Vector2(0, 800f);
+
+        rectTransform.DOAnchorPosY(endPos.y, 0.6f)
+        .SetEase(Ease.OutBack)
+        .SetLink(gameObject)
+        .SetUpdate(true);
     }
 
     public void OnClick()
