@@ -80,6 +80,7 @@ public class GMScript : MonoBehaviour
         gameEndText.color = c;
 
         gameEndPanel.SetActive(true);
+        gameEndPanel.transform.SetAsLastSibling();
         Sequence seq = DOTween.Sequence();
 
         RectTransform buttonRectL = endExit.GetComponent<RectTransform>();
