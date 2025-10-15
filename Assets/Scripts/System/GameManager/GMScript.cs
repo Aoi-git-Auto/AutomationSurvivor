@@ -1,17 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GMScript : MonoBehaviour
 {
     public static GMScript instance;
-    [SerializeField] StatusData statusdata;
     private Text timerText;
-    public float PlayerDefaultATK;
+    private GameObject gameEndPanel;
+    private Text gameEndText;
+    private Text scoreText;
+    private Button endExit;
+    private Button endRetry;
+    private GameObject scoreManager;
     public float currentTime = 300f;
     public bool inGame;
+    private bool isDead = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,23 +38,72 @@ public class GMScript : MonoBehaviour
             timerText.text = $"{(int)currentTime}";
             if(currentTime <= 0)
             {
-                GameClear();
+                isDead = false;
+                GameEnd();
             }
         }
     }
-    public void GameOver()
+
+    public void LoadUI(GameObject endPanel, Text timer, Text score, Text endText, Button re, Button esc, GameObject scManager)
     {
-        inGame = false;
-        SceneManager.LoadScene("GameOverScene");
-    }
-    public void GameClear()
-    {
-        inGame = false;
-        SceneManager.LoadScene("GameClearScene");
+        gameEndPanel = endPanel;
+        timerText = timer;
+        scoreText = score;
+        gameEndText = endText;
+        endRetry = re;
+        endExit = esc;
+        scoreManager = scManager;
+
+        gameEndPanel.SetActive(false);
     }
 
-    public void GetTimerText(Text t)
+    public void GameEnd()
     {
-        timerText = t;
+        inGame = false;
+        Time.timeScale = 0;
+
+        if (isDead)
+        {
+            gameEndText.text = "You Died...";
+            gameEndText.color = Color.red;
+        }
+        else
+        {
+            gameEndText.text = "You Survived!";
+            gameEndText.color = Color.yellow;
+        }
+
+        isDead = true;
+
+        Color c = gameEndText.color;
+        c.a = 0;
+        gameEndText.color = c;
+
+        gameEndPanel.SetActive(true);
+        gameEndPanel.transform.SetAsLastSibling();
+        Sequence seq = DOTween.Sequence();
+
+        RectTransform buttonRectL = endExit.GetComponent<RectTransform>();
+        RectTransform buttonRectR = endRetry.GetComponent<RectTransform>();
+        Vector2 endPosL = buttonRectL.anchoredPosition;
+        Vector2 endPosR = buttonRectR.anchoredPosition;
+        buttonRectL.anchoredPosition = endPosL + new Vector2(0, -300);
+        buttonRectR.anchoredPosition = endPosR + new Vector2(0, -300);
+
+        int finalscore = scoreManager.GetComponent<ScoreManager>().GetStatus();
+
+        seq.Append(gameEndText.DOFade(1f, 1f))
+        .AppendInterval(1f)
+        .Append(gameEndText.rectTransform.DOAnchorPosY(gameEndText.rectTransform.anchoredPosition.y + 60f, 0.6f))
+        .AppendInterval(0.3f)
+        .AppendCallback(() =>
+        {
+            scoreText.text = finalscore.ToString();
+        })
+        .AppendInterval(1.5f)
+        .Append(buttonRectL.DOAnchorPosY(endPosL.y, 0.6f))
+        .Join(buttonRectR.DOAnchorPosY(endPosR.y, 0.6f));
+
+        seq.SetUpdate(true);
     }
 }

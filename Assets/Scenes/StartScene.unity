@@ -623,8 +623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5baddfdbb424e4bbb6c5b3e79de55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusdata: {fileID: 0}
-  PlayerDefaultATK: 0
   currentTime: 300
   inGame: 0
 --- !u!4 &1074730328
