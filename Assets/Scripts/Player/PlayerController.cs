@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour,IDamageable
     public void Die()
     {
         spritePlayer.enabled = false;
-        GMScript.instance.GameOver();
+        GMScript.instance.GameEnd();
     }
     private IEnumerator flashSprite()
     {

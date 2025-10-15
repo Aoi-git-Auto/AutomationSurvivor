@@ -15,6 +15,7 @@ public class GMScript : MonoBehaviour
     private GameObject scoreManager;
     public float currentTime = 300f;
     public bool inGame;
+    private bool isDead = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,20 +38,10 @@ public class GMScript : MonoBehaviour
             timerText.text = $"{(int)currentTime}";
             if(currentTime <= 0)
             {
-                GameClear();
+                isDead = false;
+                GameEnd();
             }
         }
-    }
-    public void GameOver()
-    {
-        inGame = false;
-        Time.timeScale = 0;
-        GameEnd();
-    }
-    public void GameClear()
-    {
-        inGame = false;
-        SceneManager.LoadScene("GameClearScene");
     }
 
     public void LoadUI(GameObject endPanel, Text timer, Text score, Text endText, Button re, Button esc, GameObject scManager)
@@ -66,8 +57,24 @@ public class GMScript : MonoBehaviour
         gameEndPanel.SetActive(false);
     }
 
-    private void GameEnd()
+    public void GameEnd()
     {
+        inGame = false;
+        Time.timeScale = 0;
+
+        if (isDead)
+        {
+            gameEndText.text = "You Died...";
+            gameEndText.color = Color.red;
+        }
+        else
+        {
+            gameEndText.text = "You Survived!";
+            gameEndText.color = Color.yellow;
+        }
+
+        isDead = true;
+
         Color c = gameEndText.color;
         c.a = 0;
         gameEndText.color = c;
