@@ -22,12 +22,12 @@ public class EnemyGenerator : MonoBehaviour
         }
         else if (dataBase.enemies[0].TYPE == Type.ELITE)
         {
-            span = 20f;
+            span = 10f;
         }
 
         else if (dataBase.enemies[0].TYPE == Type.BOSS)
         {
-            span = 90f;
+            span = 30f;
         }
     }
     
