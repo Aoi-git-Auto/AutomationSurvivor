@@ -13,7 +13,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected float enemyATK;
     protected float MaxHP;
     protected float currentHP;
-    protected Element element;
+    protected Type type;
     protected int enemyEXP;
     protected float speed;
     protected int score;
@@ -35,7 +35,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         enemyATK = enemyStatus.ATK;
         MaxHP = enemyStatus.MAXHP;
         currentHP = MaxHP;
-        element = enemyStatus.ELEMENT;
+        type = enemyStatus.TYPE;
         enemyEXP = enemyStatus.EXP;
         speed = enemyStatus.SPEED;
         score = enemyStatus.SCORE;
