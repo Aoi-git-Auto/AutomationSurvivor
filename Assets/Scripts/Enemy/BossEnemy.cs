@@ -10,6 +10,7 @@ public class BossEnemy : AbstractEnemy
     private Vector3 direction;
     private BossHPBarContoroller bar;
     private GameObject hp;
+    private EnemyGenerator enemyGenerator;
 
     protected new void Start()
     {
@@ -31,6 +32,10 @@ public class BossEnemy : AbstractEnemy
         if(currentHP <= 0)
         {
             Destroy(hp);
+            if (enemyGenerator != null)
+            {
+                enemyGenerator.bossArrival = false;
+            }
             Die();
         }
     }
