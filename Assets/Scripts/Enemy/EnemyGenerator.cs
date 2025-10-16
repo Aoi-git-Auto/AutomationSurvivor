@@ -64,7 +64,7 @@ public class EnemyGenerator : MonoBehaviour
         float rndNegativeX = Random.Range(-3.0f,-1.0f);
         float rndNegativeY = Random.Range(-3.0f, -1.0f);
         
-                switch(rndUD)
+        switch(rndUD)
         {
             case 0:
             enemySpwanPos.y = rndPositiveY;
