@@ -35,14 +35,22 @@ public class EnemyGenerator : MonoBehaviour
     void Update()
     {
         currentTime += Time.deltaTime;
-        if(currentTime >= span && !bossArrival)
+        if (currentTime >= span && !bossArrival)
         {
-            if(dataBase.enemies[0].TYPE == Type.BOSS)
+            if (dataBase.enemies[0].TYPE == Type.BOSS)
             {
                 bossArrival = true;
             }
             GenerateEnemy();
             currentTime = 0f;
+        }
+        if (GMScript.instance.currentTime <= 150)
+        {
+            span = span / 2;
+        }
+        if(GMScript.instance.currentTime <= 60)
+        {
+            span = span / 4;
         }
     }
     
