@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Element
+public enum Type
 {
     NORMAL,
+    ELITE,
     BOSS
 };
 
@@ -14,8 +15,8 @@ public class EnemyStatus : ScriptableObject
     public float MAXHP;
     public float ATK;
     public float SPEED;
-    public float SPAN;
     public int EXP;
     public int SCORE;
-    public Element ELEMENT;
+    public Type TYPE;
+    public GameObject PREHUB;
 }

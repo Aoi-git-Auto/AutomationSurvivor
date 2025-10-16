@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f24f0a561189074192ce71ec383923c, type: 3}
-  m_Name: BossEnemy
+  m_Name: HardEnemy
   m_EditorClassIdentifier: 
-  MAXHP: 100
-  ATK: 20
-  SPEED: 1
-  SPAN: 1
-  EXP: 100
-  SCORE: 1000
-  ELEMENT: 1
+  MAXHP: 25
+  ATK: 10
+  SPEED: 0.6
+  EXP: 30
+  SCORE: 500
+  TYPE: 1
+  PREHUB: {fileID: 832153090162448149, guid: 03dd2fae8a9725b41a9d8663c03f59bc, type: 3}

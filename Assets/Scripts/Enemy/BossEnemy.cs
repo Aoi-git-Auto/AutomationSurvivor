@@ -10,12 +10,14 @@ public class BossEnemy : AbstractEnemy
     private Vector3 direction;
     private BossHPBarContoroller bar;
     private GameObject hp;
+    private GameObject bossGenerator;
 
     protected new void Start()
     {
         base.Start();
         GameObject canvas = GameObject.Find("UICanvas");
 
+        bossGenerator = GameObject.Find("BossEnemyGenerator");
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
 
@@ -31,6 +33,10 @@ public class BossEnemy : AbstractEnemy
         if(currentHP <= 0)
         {
             Destroy(hp);
+            if (bossGenerator != null)
+            {
+                bossGenerator.GetComponent<EnemyGenerator>().bossArrival = false;
+            }
             Die();
         }
     }
