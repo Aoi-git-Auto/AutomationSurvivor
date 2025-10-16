@@ -5,15 +5,12 @@ using UnityEngine;
 public abstract class AbstractEnemy : MonoBehaviour, IEnemy
 {
     [SerializeField]
-    protected EnemyStatus enemyStatus;
-    [SerializeField]
     protected GameObject expPrehub;
     [SerializeField]
     protected GameObject hitEffect;
     protected float enemyATK;
     protected float MaxHP;
     protected float currentHP;
-    protected Type type;
     protected int enemyEXP;
     protected float speed;
     protected int score;
@@ -32,13 +29,6 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     // Start is called before the first frame update
     protected void Start()
     {
-        enemyATK = enemyStatus.ATK;
-        MaxHP = enemyStatus.MAXHP;
-        currentHP = MaxHP;
-        type = enemyStatus.TYPE;
-        enemyEXP = enemyStatus.EXP;
-        speed = enemyStatus.SPEED;
-        score = enemyStatus.SCORE;
         player = GameObject.FindGameObjectWithTag("Player");
         scoreManager = GameObject.Find("ScoreManager");
         playerPos = player.transform.position;
@@ -79,6 +69,16 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         Vector2 directrion = (transform.position - playerPos).normalized;
         rb.velocity = directrion * knockBack;
         StartCoroutine(StopKnockBack(0.5f));
+    }
+
+    public void Initialize(EnemyStatus initialStatus)
+    {
+        enemyATK = initialStatus.ATK;
+        MaxHP = initialStatus.MAXHP;
+        currentHP = MaxHP;
+        enemyEXP = initialStatus.EXP;
+        speed = initialStatus.SPEED;
+        score = initialStatus.SCORE;
     }
 
     protected virtual void FixedUpdate()
