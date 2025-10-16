@@ -27,7 +27,7 @@ public class EnemyGenerator : MonoBehaviour
 
         else if (dataBase.enemies[0].TYPE == Type.BOSS)
         {
-            span = 30f;
+            span = 40f;
         }
     }
     
