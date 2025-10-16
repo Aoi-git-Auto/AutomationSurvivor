@@ -15,7 +15,6 @@ public class EnemyStatus : ScriptableObject
     public float MAXHP;
     public float ATK;
     public float SPEED;
-    public float SPAN;
     public int EXP;
     public int SCORE;
     public Type TYPE;

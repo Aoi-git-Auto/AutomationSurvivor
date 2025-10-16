@@ -15,7 +15,7 @@ MonoBehaviour:
   MAXHP: 25
   ATK: 10
   SPEED: 0.6
-  SPAN: 10
   EXP: 30
   SCORE: 500
-  ELEMENT: 0
+  TYPE: 1
+  PREHUB: {fileID: 832153090162448149, guid: 03dd2fae8a9725b41a9d8663c03f59bc, type: 3}
