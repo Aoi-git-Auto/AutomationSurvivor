@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealItem : AbstractStatusItem
 {
     [SerializeField]
-    private int healAmount;
+    private float healAmount;
     protected override void Enhance(GameObject player)
     {
         player.GetComponent<PlayerController>().Heal(healAmount);

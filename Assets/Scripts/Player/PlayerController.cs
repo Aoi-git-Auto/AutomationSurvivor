@@ -73,15 +73,17 @@ public class PlayerController : MonoBehaviour,IDamageable
         }
     }
 
-    public void Heal(int heal)
+    public void Heal(float heal)
     {
         if (hpSlider != null)
         {
-            if (statusdata.MAXHP >= currentHP)
+            if (currentHP + heal > statusdata.MAXHP)
             {
-                currentHP += heal;
-                hpSlider.value = currentHP;
+                heal = statusdata.MAXHP - currentHP;
             }
+            currentHP += heal;
+            hpSlider.value = currentHP;
+            Debug.Log("now HP: " + currentHP);
         }
     }
 
