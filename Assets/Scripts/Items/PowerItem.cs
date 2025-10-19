@@ -15,6 +15,7 @@ public class PowerItem : AbstractStatusItem
         if (player.CompareTag("Player"))
         {
             playerAttack.AddPower(powerAmount);
+            Destroy(this.gameObject);
         }
     }
 }
