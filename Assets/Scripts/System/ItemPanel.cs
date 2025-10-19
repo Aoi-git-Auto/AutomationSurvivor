@@ -17,6 +17,7 @@ public class ItemPanel : MonoBehaviour
     private ItemStatus element;
     public Action OnSelected;
     private RectTransform rectTransform;
+    private GameObject player;
 
     void Awake()
     {
@@ -25,6 +26,7 @@ public class ItemPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         element = itemData.ITEMS[UnityEngine.Random.Range(0, itemData.ITEMS.Count)];
         itemName.text = element.NAME;
         itemInfo.text = element.INFO;
@@ -42,7 +44,7 @@ public class ItemPanel : MonoBehaviour
 
     public void OnClick()
     {
-        Instantiate(element.PREHUB, transform.position, transform.rotation);
+        Instantiate(element.PREHUB, player.transform.position, Quaternion.identity);
         OnSelected?.Invoke();
     }
 }

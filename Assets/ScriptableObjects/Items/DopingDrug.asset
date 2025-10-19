@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aca0855b70c4c348bc8daf746788d1e, type: 3}
+  m_Name: DopingDrug
+  m_EditorClassIdentifier: 
+  NAME: DopingDrug
+  INFO: "\u7B4B\u529B\u3092\u4E0A\u3052\u308B\u85AC"
+  SPRITE: {fileID: 21300000, guid: e9699b18905543d43bd5dfeb13e81947, type: 3}
+  PREHUB: {fileID: 4236416280809831874, guid: 188ffeaf3645da24a9bd16b47bb8721f, type: 3}

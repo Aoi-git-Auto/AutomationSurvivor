@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour,IDamageable
 {
     [SerializeField] StatusData statusdata;
     private SpriteRenderer spritePlayer;
-    private float currentTime = 0.0f;
+    private float speed;
     private float damageTime = 0.0f;
     [SerializeField] Slider hpSlider;
     private Rigidbody2D rb;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour,IDamageable
         rb = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
         currentHP = statusdata.MAXHP;
+        speed = statusdata.SPEED;
         invincibility = false;
         isFlashing = false;
     }
@@ -36,7 +37,6 @@ public class PlayerController : MonoBehaviour,IDamageable
         hpSlider.maxValue = statusdata.MAXHP;
         inputAxis.x = Input.GetAxisRaw("Horizontal");
         inputAxis.y = Input.GetAxisRaw("Vertical");
-        currentTime += Time.deltaTime;
         if (invincibility)
         {
             damageTime += Time.deltaTime;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour,IDamageable
     }
     void FixedUpdate()
     {
-        rb.velocity = inputAxis.normalized * statusdata.SPEED;
+        rb.velocity = inputAxis.normalized * speed;
     }
 
     public void Damage(float damage)
@@ -73,16 +73,24 @@ public class PlayerController : MonoBehaviour,IDamageable
         }
     }
 
-    public void Heal(int heal)
+    public void Heal(float heal)
     {
         if (hpSlider != null)
         {
-            if (statusdata.MAXHP >= currentHP)
+            if (currentHP + heal > statusdata.MAXHP)
             {
-                currentHP += heal;
-                hpSlider.value = currentHP;
+                heal = statusdata.MAXHP - currentHP;
             }
+            currentHP += heal;
+            hpSlider.value = currentHP;
+            Debug.Log("now HP: " + currentHP);
         }
+    }
+
+    public void AddSpeed(float amount)
+    {
+        speed = speed * amount;
+        Debug.Log("Speed UP!");
     }
 
     public void Die()

@@ -31,4 +31,10 @@ public class PlayerAttack : MonoBehaviour
             bat.GetComponent<BatAttack>().SetStatus(attack, nockback, attackPos);
         }
     }
+
+    public void AddPower(float power)
+    {
+        attack += power;
+        Debug.Log("Power UP");
+    }
 }

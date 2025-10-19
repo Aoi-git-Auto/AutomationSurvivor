@@ -13,6 +13,8 @@ public class EnemyGenerator : MonoBehaviour
     private int rndLR;
     private Vector2 enemySpwanPos;
     public bool bossArrival = false;
+    private bool inHalf = false;
+    private bool inLast = false;
 
     void Start()
     {
@@ -44,13 +46,15 @@ public class EnemyGenerator : MonoBehaviour
             GenerateEnemy();
             currentTime = 0f;
         }
-        if (GMScript.instance.currentTime <= 150)
+        if (GMScript.instance.currentTime <= 150 && !inHalf)
         {
             span = span / 2;
+            inHalf = true;
         }
-        if(GMScript.instance.currentTime <= 60)
+        if(GMScript.instance.currentTime <= 60 && !inLast)
         {
             span = span / 4;
+            inLast = true;
         }
     }
     
