@@ -4,17 +4,17 @@ public class PowerItem : AbstractStatusItem
 {
     [SerializeField]
     private float powerAmount;
-    private PlayerAttack playerAttack;
+    private GameObject playerAttack;
     private void Start()
     {
-        playerAttack = GetComponentInChildren<PlayerAttack>();
+        playerAttack = GameObject.Find("Normal_ATK");
     }
 
     protected override void Enhance(GameObject player)
     {
         if (player.CompareTag("Player"))
         {
-            playerAttack.AddPower(powerAmount);
+            playerAttack.GetComponent<PlayerAttack>().AddPower(powerAmount);
             Destroy(this.gameObject);
         }
     }

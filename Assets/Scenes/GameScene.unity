@@ -865,7 +865,7 @@ GameObject:
   - component: {fileID: 466373779}
   - component: {fileID: 466373780}
   m_Layer: 0
-  m_Name: Nomal_ATK
+  m_Name: Normal_ATK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
