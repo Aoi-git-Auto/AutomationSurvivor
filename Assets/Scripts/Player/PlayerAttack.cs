@@ -35,5 +35,6 @@ public class PlayerAttack : MonoBehaviour
     public void AddPower(float power)
     {
         attack += power;
+        Debug.Log("Power UP");
     }
 }
