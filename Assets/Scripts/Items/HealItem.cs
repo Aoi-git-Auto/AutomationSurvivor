@@ -9,5 +9,6 @@ public class HealItem : AbstractStatusItem
     protected override void Enhance(GameObject player)
     {
         player.GetComponent<PlayerController>().Heal(healAmount);
+        Destroy(this.gameObject);
     }
 }
