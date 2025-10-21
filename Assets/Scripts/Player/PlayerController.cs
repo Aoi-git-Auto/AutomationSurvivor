@@ -5,17 +5,25 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour,IDamageable
 {
-    [SerializeField] StatusData statusdata;
+    [SerializeField]
+    private StatusData statusdata;
     private SpriteRenderer spritePlayer;
     private float speed;
     private float damageTime = 0.0f;
-    [SerializeField] Slider hpSlider;
+    [SerializeField] 
+    private Slider hpSlider;
     private Rigidbody2D rb;
     private float currentHP;
     public float Health => currentHP;
     private bool invincibility;
     private bool isFlashing;
     private Vector2 inputAxis;
+    [SerializeField]
+    private AudioClip damagedSE;
+    [SerializeField]
+    private AudioClip dyingSE;
+    private AudioSource audioSource;
+
     void Start()
     {
         if (hpSlider != null)
@@ -23,6 +31,7 @@ public class PlayerController : MonoBehaviour,IDamageable
             hpSlider.maxValue = statusdata.MAXHP;
             hpSlider.value = statusdata.MAXHP;
         }
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
         currentHP = statusdata.MAXHP;
@@ -58,6 +67,7 @@ public class PlayerController : MonoBehaviour,IDamageable
         {
             currentHP -= damage;
             invincibility = true;
+            audioSource.PlayOneShot(damagedSE);
             if (hpSlider == true)
             {
                 hpSlider.value = currentHP;
@@ -96,8 +106,11 @@ public class PlayerController : MonoBehaviour,IDamageable
     public void Die()
     {
         spritePlayer.enabled = false;
+        hpSlider.enabled = false;
+        audioSource.PlayOneShot(dyingSE);
         GMScript.instance.GameEnd();
     }
+    
     private IEnumerator flashSprite()
     {
         isFlashing = true;
