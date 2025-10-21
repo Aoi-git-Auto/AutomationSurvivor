@@ -7,12 +7,19 @@ public class SceneController : MonoBehaviour
 {
     [SerializeField]
     private float time = 300f;
+    [SerializeField]
+    private AudioClip startSE;
+    private AudioSource audioSource;
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void OnGame()
     {
         GMScript.instance.inGame = true;
         GMScript.instance.currentTime = time;
         Time.timeScale = 1;
-        SceneManager.LoadScene("GameScene");
+        StartCoroutine(GameStart());
     }
 
     public void OnRetry()
@@ -27,5 +34,12 @@ public class SceneController : MonoBehaviour
     {
         GMScript.instance.inGame = false;
         SceneManager.LoadScene("StartScene");
+    }
+
+    private IEnumerator GameStart()
+    {
+        audioSource.PlayOneShot(startSE);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("GameScene");
     }
 }
