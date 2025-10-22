@@ -18,50 +18,24 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            audioSource = GetComponent<AudioSource>();
+            audioSource.loop = true;
             DontDestroyOnLoad(this.gameObject);
         }
         else
         {
             Destroy(this.gameObject);
         }
-                audioSource = GetComponent<AudioSource>();
-        audioSource.loop = true;
     }
 
-    public void PlayBGM(AudioClip bgm, float fadeTime)
+    public void PlayBGM(AudioClip bgm)
     {
-        if (audioSource.clip == bgm) return;
-        if (fadeCoroutine != null)
-        {
-            StopCoroutine(fadeCoroutine);
-        }
-        fadeCoroutine = StartCoroutine(FadeToBGM(bgm, fadeTime));
-    }
-    
-    private IEnumerator FadeToBGM(AudioClip newClip, float fadeTime)
-    {
-        float startVolume = audioSource.volume;
-
-        for (float t = 0; t < fadeTime; t += Time.deltaTime)
-        {
-            audioSource.volume = Mathf.Lerp(startVolume, 0, t / fadeTime);
-            yield return null;
-        }
-
         audioSource.Stop();
-        audioSource.clip = newClip;
+        audioSource.clip = bgm;
         audioSource.Play();
-
-        for (float t = 0; t < fadeTime; t += Time.deltaTime)
-        {
-            audioSource.volume = Mathf.Lerp(0, startVolume, t / fadeTime);
-            yield return null;
-        }
-
-        audioSource.volume = startVolume;
     }
 
-    public void PlayTitleBGM() => PlayBGM(titleBGM, 1f);
-    public void PlayinGameBGM() => PlayBGM(inGameBGM, 1f);
-    public void PlayBossBGM(AudioClip bossBGM) => PlayBGM(bossBGM, 1f);
+    public void PlayTitleBGM() => PlayBGM(titleBGM);
+    public void PlayinGameBGM() => PlayBGM(inGameBGM);
+    public void PlayBossBGM(AudioClip bossBGM) => PlayBGM(bossBGM);
 }

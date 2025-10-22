@@ -16,26 +16,26 @@ public class SceneController : MonoBehaviour
     }
     public void OnGame()
     {
+        StartCoroutine(GameStart());
         GMScript.instance.inGame = true;
         GMScript.instance.currentTime = time;
         Time.timeScale = 1;
-        StartCoroutine(GameStart());
     }
 
     public void OnRetry()
     {
+        audioSource.PlayOneShot(startSE);
+        StartCoroutine(GameStart());
         GMScript.instance.currentTime = time;
         GMScript.instance.inGame = true;
         Time.timeScale = 1;
-        AudioManager.instance.PlayTitleBGM();
-        SceneManager.LoadScene("GameScene");
     }
 
     public void OnExit()
     {
         GMScript.instance.inGame = false;
-        AudioManager.instance.PlayTitleBGM();
-        SceneManager.LoadScene("StartScene");
+        audioSource.PlayOneShot(startSE);
+        StartCoroutine(GameExit());
     }
 
     private IEnumerator GameStart()
@@ -44,5 +44,19 @@ public class SceneController : MonoBehaviour
         AudioManager.instance.PlayinGameBGM();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("GameScene");
+    }
+
+    private IEnumerator GameExit()
+    {
+        audioSource.PlayOneShot(startSE);
+        yield return new WaitForSecondsRealtime(1f);
+        AudioManager.instance.PlayTitleBGM();
+        AsyncOperation async = SceneManager.LoadSceneAsync("StartScene");
+        while (!async.isDone)
+        {
+            Debug.Log("loading");
+            yield return null;
+
+        }    
     }
 }

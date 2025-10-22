@@ -542,7 +542,7 @@ MonoBehaviour:
   itemName: {fileID: 6118737177748686429}
   itemImage: {fileID: 7110083622899321645}
   itemInfo: {fileID: 2847010431826763422}
-  selectedSE: {fileID: 0}
+  selectedSE: {fileID: 8300000, guid: 0b205d5b5de532a43b0b99dd9228bb65, type: 3}
 --- !u!82 &5661697550483320289
 AudioSource:
   m_ObjectHideFlags: 0
