@@ -19,4 +19,5 @@ public class EnemyStatus : ScriptableObject
     public int SCORE;
     public Type TYPE;
     public GameObject PREHUB;
+    public AudioClip BGM;
 }

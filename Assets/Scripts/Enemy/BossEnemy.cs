@@ -22,6 +22,7 @@ public class BossEnemy : AbstractEnemy
         audioSource = GetComponent<AudioSource>();
         GameObject canvas = GameObject.Find("UICanvas");
 
+        AudioManager.instance.PlayBossBGM(bgm);
         bossGenerator = GameObject.Find("BossEnemyGenerator");
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
@@ -43,7 +44,7 @@ public class BossEnemy : AbstractEnemy
                 bossGenerator.GetComponent<EnemyGenerator>().bossArrival = false;
             }
             audioSource.PlayOneShot(dyingSE);
-            audioSource.loop = false;
+            AudioManager.instance.PlayinGameBGM();
             Die();
         }
     }
