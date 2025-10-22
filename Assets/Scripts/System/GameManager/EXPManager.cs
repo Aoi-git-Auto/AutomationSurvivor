@@ -13,12 +13,17 @@ public class EXPManager : MonoBehaviour
     [SerializeField]
     private Slider EXPbar;
     [SerializeField]
+    private AudioClip levelUpSE;
+    [SerializeField]
+    private AudioClip getOrbSE;
+    [SerializeField]
     private List<GameObject> itemPanels = new List<GameObject>();
 
     private List<GameObject> keepPanels = new List<GameObject>();
     private int currentExp;
     private int currentLv;
     private int NeedExp;
+    private AudioSource audioSource;
     [SerializeField]
     private GameObject canvas;
 
@@ -29,6 +34,7 @@ public class EXPManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         currentExp = 0;
         currentLv = 1;
         NeedExp = baseExp * (int)Mathf.Pow(growth, currentLv - 1);
@@ -47,6 +53,7 @@ public class EXPManager : MonoBehaviour
         EXPbar.maxValue = NeedExp;
         EXPbar.value = currentExp;
         LevelUpText.enabled = true;
+        audioSource.PlayOneShot(levelUpSE);
         yield return new WaitForSeconds(0.5f);
         LevelUpText.enabled = false;
         foreach (GameObject panel in itemPanels)
@@ -62,6 +69,7 @@ public class EXPManager : MonoBehaviour
     public void AddEXP(int get)
     {
         currentExp += get;
+        audioSource.PlayOneShot(getOrbSE);
         EXPbar.value = currentExp;
         if (currentExp >= NeedExp)
         {
