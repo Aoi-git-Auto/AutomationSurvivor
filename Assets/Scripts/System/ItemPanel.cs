@@ -13,7 +13,10 @@ public class ItemPanel : MonoBehaviour
     private Image itemImage;
     [SerializeField]
     private Text itemInfo;
+    [SerializeField]
+    private AudioClip selectedSE;
 
+    private AudioSource audioSource;
     private ItemStatus element;
     public Action OnSelected;
     private RectTransform rectTransform;
@@ -22,6 +25,7 @@ public class ItemPanel : MonoBehaviour
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        audioSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -44,6 +48,7 @@ public class ItemPanel : MonoBehaviour
 
     public void OnClick()
     {
+        audioSource.PlayOneShot(selectedSE);
         Instantiate(element.PREHUB, player.transform.position, Quaternion.identity);
         OnSelected?.Invoke();
     }
