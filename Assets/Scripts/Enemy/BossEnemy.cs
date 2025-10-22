@@ -12,11 +12,17 @@ public class BossEnemy : AbstractEnemy
     private GameObject hp;
     private GameObject bossGenerator;
 
+    [SerializeField]
+    private AudioClip dyingSE;
+    private AudioSource audioSource;
+
     protected new void Start()
     {
         base.Start();
+        audioSource = GetComponent<AudioSource>();
         GameObject canvas = GameObject.Find("UICanvas");
 
+        AudioManager.instance.PlayBossBGM(bgm);
         bossGenerator = GameObject.Find("BossEnemyGenerator");
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
@@ -37,6 +43,8 @@ public class BossEnemy : AbstractEnemy
             {
                 bossGenerator.GetComponent<EnemyGenerator>().bossArrival = false;
             }
+            audioSource.PlayOneShot(dyingSE);
+            AudioManager.instance.PlayinGameBGM();
             Die();
         }
     }

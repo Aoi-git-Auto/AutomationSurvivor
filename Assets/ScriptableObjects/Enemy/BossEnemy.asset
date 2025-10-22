@@ -19,3 +19,4 @@ MonoBehaviour:
   SCORE: 1000
   TYPE: 2
   PREHUB: {fileID: 832153090162448149, guid: 110c07e991ffd5a4082d164e9a24aae8, type: 3}
+  BGM: {fileID: 8300000, guid: 7112a56a88ec2b54cbdd9ac9945d49b4, type: 3}

@@ -14,6 +14,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected int enemyEXP;
     protected float speed;
     protected int score;
+    protected AudioClip bgm;
     protected Rigidbody2D rb;
 
     protected GameObject player;
@@ -79,6 +80,10 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         enemyEXP = initialStatus.EXP;
         speed = initialStatus.SPEED;
         score = initialStatus.SCORE;
+        if(initialStatus.BGM != null)
+        {
+            bgm = initialStatus.BGM;
+        }
     }
 
     protected virtual void FixedUpdate()

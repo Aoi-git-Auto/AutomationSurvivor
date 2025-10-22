@@ -29,6 +29,12 @@ public class GMScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    void Start()
+    {
+        AudioManager.instance.PlayTitleBGM();
+    }
+
     void Update()
     {
         if (inGame && timerText != null)
