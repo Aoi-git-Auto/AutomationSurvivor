@@ -13,8 +13,6 @@ public class BossEnemy : AbstractEnemy
     private GameObject bossGenerator;
 
     [SerializeField]
-    private AudioClip bossBGM;
-    [SerializeField]
     private AudioClip dyingSE;
     private AudioSource audioSource;
 
@@ -22,8 +20,6 @@ public class BossEnemy : AbstractEnemy
     {
         base.Start();
         audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(bossBGM);
-        audioSource.loop = true;
         GameObject canvas = GameObject.Find("UICanvas");
 
         bossGenerator = GameObject.Find("BossEnemyGenerator");
@@ -46,7 +42,6 @@ public class BossEnemy : AbstractEnemy
             {
                 bossGenerator.GetComponent<EnemyGenerator>().bossArrival = false;
             }
-            audioSource.Stop();
             audioSource.PlayOneShot(dyingSE);
             audioSource.loop = false;
             Die();

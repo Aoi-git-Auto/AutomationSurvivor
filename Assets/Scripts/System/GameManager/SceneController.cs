@@ -27,18 +27,21 @@ public class SceneController : MonoBehaviour
         GMScript.instance.currentTime = time;
         GMScript.instance.inGame = true;
         Time.timeScale = 1;
+        AudioManager.instance.PlayTitleBGM();
         SceneManager.LoadScene("GameScene");
     }
 
     public void OnExit()
     {
         GMScript.instance.inGame = false;
+        AudioManager.instance.PlayTitleBGM();
         SceneManager.LoadScene("StartScene");
     }
 
     private IEnumerator GameStart()
     {
         audioSource.PlayOneShot(startSE);
+        AudioManager.instance.PlayinGameBGM();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("GameScene");
     }
