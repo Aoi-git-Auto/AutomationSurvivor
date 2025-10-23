@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 10
   startSE: {fileID: 8300000, guid: 0b205d5b5de532a43b0b99dd9228bb65, type: 3}
+  loadingCanvas: {fileID: 1097144346784384088, guid: 5b78ae0ef65d92d41b00c6f88843b3e3, type: 3}
 --- !u!82 &174889061941942687
 AudioSource:
   m_ObjectHideFlags: 0

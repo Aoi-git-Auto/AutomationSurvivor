@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
@@ -10,53 +11,80 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     private AudioClip startSE;
     private AudioSource audioSource;
+    private Slider progressBar;
+    private float displayProgress = 0f;
+
+    [SerializeField]
+    private GameObject loadingCanvas;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     public void OnGame()
     {
+        audioSource.PlayOneShot(startSE);
         StartCoroutine(GameStart());
-        GMScript.instance.inGame = true;
-        GMScript.instance.currentTime = time;
-        Time.timeScale = 1;
     }
 
     public void OnRetry()
     {
         audioSource.PlayOneShot(startSE);
         StartCoroutine(GameStart());
-        GMScript.instance.currentTime = time;
-        GMScript.instance.inGame = true;
-        Time.timeScale = 1;
     }
 
     public void OnExit()
     {
-        GMScript.instance.inGame = false;
         audioSource.PlayOneShot(startSE);
         StartCoroutine(GameExit());
     }
 
     private IEnumerator GameStart()
     {
-        audioSource.PlayOneShot(startSE);
+        AsyncOperation async = SceneManager.LoadSceneAsync("GameScene");
+        var loading = Instantiate(loadingCanvas);
+        progressBar = loading.GetComponentInChildren<Slider>();
+        async.allowSceneActivation = false;
+
+        displayProgress = 0f;
+
+        while (displayProgress < 1.1f)
+        {
+            yield return new WaitForSecondsRealtime(0.1f);
+            progressBar.value = displayProgress;
+            displayProgress += 0.1f;
+        }
+        
+        yield return new WaitForSecondsRealtime(1f);
+
         AudioManager.instance.PlayinGameBGM();
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("GameScene");
+        GMScript.instance.inGame = true;
+        GMScript.instance.currentTime = time;
+        Time.timeScale = 1;
+        async.allowSceneActivation = true;
     }
 
     private IEnumerator GameExit()
     {
-        audioSource.PlayOneShot(startSE);
-        yield return new WaitForSecondsRealtime(1f);
-        AudioManager.instance.PlayTitleBGM();
         AsyncOperation async = SceneManager.LoadSceneAsync("StartScene");
-        while (!async.isDone)
-        {
-            Debug.Log("loading");
-            yield return null;
+        var loading = Instantiate(loadingCanvas);
+        progressBar = loading.GetComponentInChildren<Slider>();
+        async.allowSceneActivation = false;
 
-        }    
+        displayProgress = 0f;
+
+        while (displayProgress < 1.1f)
+        {
+            yield return new WaitForSecondsRealtime(0.1f);
+            progressBar.value = displayProgress;
+            displayProgress += 0.1f;
+        }
+
+        yield return new WaitForSecondsRealtime(1f);
+
+        AudioManager.instance.PlayTitleBGM();
+        GMScript.instance.inGame = false;
+        async.allowSceneActivation = true;
     }
 }

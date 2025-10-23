@@ -536,6 +536,10 @@ PrefabInstance:
       propertyPath: time
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 2650317621596318843, guid: 1fe865a9811c3a94e91965f33bfd2117, type: 3}
+      propertyPath: loadingCanvas
+      value: 
+      objectReference: {fileID: 1097144346784384088, guid: 5b78ae0ef65d92d41b00c6f88843b3e3, type: 3}
     - target: {fileID: 7850014406854287655, guid: 1fe865a9811c3a94e91965f33bfd2117, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.016000003
