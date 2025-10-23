@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     private AudioClip startSE;
     private AudioSource audioSource;
+    private Slider progressBar;
+    private float displayProgress = 0f;
 
     [SerializeField]
     private GameObject loadingCanvas;
@@ -29,9 +32,6 @@ public class SceneController : MonoBehaviour
     {
         audioSource.PlayOneShot(startSE);
         StartCoroutine(GameStart());
-        GMScript.instance.currentTime = time;
-        GMScript.instance.inGame = true;
-        Time.timeScale = 1;
     }
 
     public void OnExit()
@@ -42,18 +42,23 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator GameStart()
     {
-        Instantiate(loadingCanvas);
         AsyncOperation async = SceneManager.LoadSceneAsync("GameScene");
+        var loading = Instantiate(loadingCanvas);
+        progressBar = loading.GetComponentInChildren<Slider>();
         async.allowSceneActivation = false;
 
-        while(async.progress < 0.9f)
-        {
-            yield return null;
-        }
+        displayProgress = 0f;
 
-        AudioManager.instance.PlayinGameBGM();
+        while (displayProgress < 1.1f)
+        {
+            yield return new WaitForSecondsRealtime(0.1f);
+            progressBar.value = displayProgress;
+            displayProgress += 0.1f;
+        }
+        
         yield return new WaitForSecondsRealtime(1f);
 
+        AudioManager.instance.PlayinGameBGM();
         GMScript.instance.inGame = true;
         GMScript.instance.currentTime = time;
         Time.timeScale = 1;
@@ -62,16 +67,22 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator GameExit()
     {
-        Instantiate(loadingCanvas);
         AsyncOperation async = SceneManager.LoadSceneAsync("StartScene");
+        var loading = Instantiate(loadingCanvas);
+        progressBar = loading.GetComponentInChildren<Slider>();
         async.allowSceneActivation = false;
 
-        while(async.progress < 0.9f)
+        displayProgress = 0f;
+
+        while (displayProgress < 1.1f)
         {
-            yield return null;
+            yield return new WaitForSecondsRealtime(0.1f);
+            progressBar.value = displayProgress;
+            displayProgress += 0.1f;
         }
+
         yield return new WaitForSecondsRealtime(1f);
-        
+
         AudioManager.instance.PlayTitleBGM();
         GMScript.instance.inGame = false;
         async.allowSceneActivation = true;
