@@ -10,16 +10,19 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     private AudioClip startSE;
     private AudioSource audioSource;
+
+    [SerializeField]
+    private GameObject loadingCanvas;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     public void OnGame()
     {
+        audioSource.PlayOneShot(startSE);
         StartCoroutine(GameStart());
-        GMScript.instance.inGame = true;
-        GMScript.instance.currentTime = time;
-        Time.timeScale = 1;
     }
 
     public void OnRetry()
@@ -33,30 +36,44 @@ public class SceneController : MonoBehaviour
 
     public void OnExit()
     {
-        GMScript.instance.inGame = false;
         audioSource.PlayOneShot(startSE);
         StartCoroutine(GameExit());
     }
 
     private IEnumerator GameStart()
     {
-        audioSource.PlayOneShot(startSE);
+        Instantiate(loadingCanvas);
+        AsyncOperation async = SceneManager.LoadSceneAsync("GameScene");
+        async.allowSceneActivation = false;
+
+        while(async.progress < 0.9f)
+        {
+            yield return null;
+        }
+
         AudioManager.instance.PlayinGameBGM();
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("GameScene");
+        yield return new WaitForSecondsRealtime(1f);
+
+        GMScript.instance.inGame = true;
+        GMScript.instance.currentTime = time;
+        Time.timeScale = 1;
+        async.allowSceneActivation = true;
     }
 
     private IEnumerator GameExit()
     {
-        audioSource.PlayOneShot(startSE);
-        yield return new WaitForSecondsRealtime(1f);
-        AudioManager.instance.PlayTitleBGM();
+        Instantiate(loadingCanvas);
         AsyncOperation async = SceneManager.LoadSceneAsync("StartScene");
-        while (!async.isDone)
-        {
-            Debug.Log("loading");
-            yield return null;
+        async.allowSceneActivation = false;
 
-        }    
+        while(async.progress < 0.9f)
+        {
+            yield return null;
+        }
+        yield return new WaitForSecondsRealtime(1f);
+        
+        AudioManager.instance.PlayTitleBGM();
+        GMScript.instance.inGame = false;
+        async.allowSceneActivation = true;
     }
 }
