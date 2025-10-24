@@ -13,6 +13,9 @@ public class SceneController : MonoBehaviour
     private AudioSource audioSource;
     private Slider progressBar;
     private float displayProgress = 0f;
+    [SerializeField]
+    private GameObject pausePanel;
+    private bool inPause;
 
     [SerializeField]
     private GameObject loadingCanvas;
@@ -20,6 +23,55 @@ public class SceneController : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+            inPause = false;
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
+    }
+
+    private void Pause()
+    {
+        if (!inPause)
+        {
+            OpenPause();
+        }
+        else
+        {
+            ClosePause();
+        }
+    }
+
+    private void OpenPause()
+    {
+        if (pausePanel != null && GMScript.instance.inGame)
+        {
+            inPause = true;
+            Time.timeScale = 0;
+            pausePanel.SetActive(true);
+        }
+    }
+
+    public void ClosePause()
+    {
+        if (pausePanel != null && GMScript.instance.inGame)
+        {
+            inPause = false;
+            Time.timeScale = 1;
+            pausePanel.SetActive(false);
+        }
     }
 
     public void OnGame()
