@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Animator_Controller : MonoBehaviour
 {
-    Animator animator;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +14,7 @@ public class Animator_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0) return;
         Vector2 vector = new Vector2(
             (int)Input.GetAxisRaw("Horizontal"),
             (int)Input.GetAxisRaw("Vertical"));
