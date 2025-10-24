@@ -19,6 +19,8 @@ public class SceneController : MonoBehaviour
 
     [SerializeField]
     private GameObject loadingCanvas;
+    [SerializeField]
+    private AudioClip pauseSE;
 
     void Awake()
     {
@@ -58,6 +60,7 @@ public class SceneController : MonoBehaviour
     {
         if (pausePanel != null && GMScript.instance.inGame)
         {
+            audioSource.PlayOneShot(pauseSE);
             inPause = true;
             Time.timeScale = 0;
             pausePanel.SetActive(true);
@@ -68,6 +71,7 @@ public class SceneController : MonoBehaviour
     {
         if (pausePanel != null && GMScript.instance.inGame)
         {
+            audioSource.PlayOneShot(startSE);
             inPause = false;
             Time.timeScale = 1;
             pausePanel.SetActive(false);
