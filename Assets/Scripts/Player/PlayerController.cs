@@ -24,6 +24,15 @@ public class PlayerController : MonoBehaviour,IDamageable
     private AudioClip dyingSE;
     private AudioSource audioSource;
 
+    [SerializeField]
+    private AudioClip guardSE;
+    [SerializeField]
+    private AudioClip destroyedSE;
+    [SerializeField]
+    private GameObject shiledPrehub;
+    private bool isGuaded = false;
+    private int damagedCount = 0;
+
     void Start()
     {
         if (hpSlider != null)
@@ -65,20 +74,35 @@ public class PlayerController : MonoBehaviour,IDamageable
     {
         if (!invincibility)
         {
-            currentHP -= damage;
-            invincibility = true;
-            audioSource.PlayOneShot(damagedSE);
-            if (hpSlider == true)
+            if (isGuaded && shiledPrehub != null)
             {
-                hpSlider.value = currentHP;
+                var shiled = Instantiate(shiledPrehub, transform.position, Quaternion.identity);
+                Destroy(shiled, 0.6f);
+                audioSource.PlayOneShot(guardSE);
+                damagedCount++;
+                if (damagedCount == 3)
+                {
+                    isGuaded = false;
+                    audioSource.PlayOneShot(destroyedSE);
+                }
             }
-            if (currentHP <= 0)
+            else
             {
-                Die();
-            }
-            if (!isFlashing)
-            {
-                StartCoroutine(flashSprite());
+                currentHP -= damage;
+                invincibility = true;
+                audioSource.PlayOneShot(damagedSE);
+                if (hpSlider == true)
+                {
+                    hpSlider.value = currentHP;
+                }
+                if (currentHP <= 0)
+                {
+                    Die();
+                }
+                if (!isFlashing)
+                {
+                    StartCoroutine(flashSprite());
+                }
             }
         }
     }
@@ -110,7 +134,7 @@ public class PlayerController : MonoBehaviour,IDamageable
         audioSource.PlayOneShot(dyingSE);
         GMScript.instance.GameEnd();
     }
-    
+
     private IEnumerator flashSprite()
     {
         isFlashing = true;
@@ -127,5 +151,11 @@ public class PlayerController : MonoBehaviour,IDamageable
         }
         spritePlayer.enabled = true;
         isFlashing = false;
+    }
+    
+    public void SetShiled()
+    {
+        isGuaded = true;
+        damagedCount = 0;
     }
 }
