@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExplosionGenerator : MonoBehaviour
 {
     private float generateTime = 0f;
-    private GameObject parent;
+    private GameObject player;
     [SerializeField]
     private float span = 7f;
     [SerializeField]
@@ -16,21 +16,21 @@ public class ExplosionGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent.gameObject;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = parent.transform.position;
+        transform.position = player.transform.position;
         generateTime += Time.deltaTime;
         if (generateTime > span)
         {
-            SpawnRodom();
+            SpawnRondom();
         }
     }
     
-    private void SpawnRodom()
+    private void SpawnRondom()
     {
         float angle = Random.Range(0f, Mathf.PI * 2);
         float distance = Mathf.Sqrt(Random.Range(0f, 1f)) * spawnRadius;

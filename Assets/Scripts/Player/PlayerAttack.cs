@@ -11,16 +11,24 @@ public class PlayerAttack : MonoBehaviour
     private float nockback;
     private float currentTime = 0f;
     private Vector2 attackPos;
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         attack = statusdata.ATK;
         nockback = statusdata.NockBack;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.parent == null)
+        {
+            this.transform.SetParent(player.transform);
+        }
+
         attackPos = transform.parent.position;
         currentTime += Time.deltaTime;
         if (currentTime >= 2.0f)
