@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour,IDamageable
             if (isGuaded && shiledPrehub != null)
             {
                 var shiled = Instantiate(shiledPrehub, transform.position, Quaternion.identity);
-                Destroy(shiled, 0.6f);
+                Destroy(shiled, 0.3f);
                 audioSource.PlayOneShot(guardSE);
                 damagedCount++;
                 if (damagedCount == 3)
