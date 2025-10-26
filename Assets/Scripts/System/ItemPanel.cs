@@ -49,7 +49,7 @@ public class ItemPanel : MonoBehaviour
     public void OnClick()
     {
         audioSource.PlayOneShot(selectedSE);
-        Instantiate(element.PREHUB, player.transform.position, Quaternion.identity);
+        Instantiate(element.PREHUB, player.transform.position, Quaternion.identity, player.transform);
         OnSelected?.Invoke();
     }
 }
