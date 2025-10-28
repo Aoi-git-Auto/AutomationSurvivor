@@ -18,7 +18,7 @@ public class ExplosionDamage : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(explosionSE);
-        Destroy(this.gameObject, 0.12f);
+        Destroy(this.gameObject, 1f);
     }
 
     void OnTriggerEnter2D(Collider2D other)

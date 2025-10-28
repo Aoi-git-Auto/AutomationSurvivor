@@ -7,11 +7,9 @@ public class ExplosionGenerator : MonoBehaviour
     private float generateTime = 0f;
     private GameObject player;
     [SerializeField]
-    private float span = 7f;
+    private float span = 6f;
     [SerializeField]
     private GameObject explosionPrehub;
-    [SerializeField]
-    private float spawnRadius = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,19 +24,13 @@ public class ExplosionGenerator : MonoBehaviour
         generateTime += Time.deltaTime;
         if (generateTime > span)
         {
-            SpawnRondom();
+            SpawnBomb();
         }
     }
     
-    private void SpawnRondom()
+    private void SpawnBomb()
     {
-        float angle = Random.Range(0f, Mathf.PI * 2);
-        float distance = Mathf.Sqrt(Random.Range(0f, 1f)) * spawnRadius;
-
-        Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
-        Vector2 spawnPos = (Vector2)transform.position + offset;
-
-        Instantiate(explosionPrehub, spawnPos, Quaternion.identity);
+        Instantiate(explosionPrehub, transform.position, Quaternion.identity);
         generateTime = 0;
     }
 }
