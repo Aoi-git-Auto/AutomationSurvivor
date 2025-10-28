@@ -5,11 +5,11 @@ using UnityEngine;
 public class ExpOrbScript : MonoBehaviour
 {
     private int Exp;
-    private GameObject ExpManager;
+    private GameObject expManager;
 
     void Start()
     {
-        ExpManager = GameObject.Find("ExpManager");
+        expManager = GameObject.Find("ExpManager");
         Destroy(this.gameObject, 10f);
     }
 
@@ -18,12 +18,12 @@ public class ExpOrbScript : MonoBehaviour
         Exp = exp;
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            ExpManager.GetComponent<EXPManager>().AddEXP(Exp);
-            Destroy(this.gameObject, 0.3f);
+            expManager.GetComponent<EXPManager>().AddEXP(Exp);
+            Destroy(this.gameObject);
         }
     }
 }
