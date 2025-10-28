@@ -1,17 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnpouleGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject AnpoulePrehub;
-    float currentTime = 0f;
-    public float span = 4f;
+    [SerializeField]
+    private GameObject AnpoulePrehub;
+    private GameObject player;
+    private float currentTime = 0f;
+    private float span = 4f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        if(player != null)
+        {
+            transform.SetParent(player.transform);
+        }
     }
 
     // Update is called once per frame
@@ -19,7 +22,7 @@ public class AnpouleGenerator : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         if(currentTime > span){
-            var anpoule = Instantiate(AnpoulePrehub,transform.position,transform.rotation);
+            Instantiate(AnpoulePrehub,transform.position,Quaternion.identity);
             currentTime = 0f;
         }
     }

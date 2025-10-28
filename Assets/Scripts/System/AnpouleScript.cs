@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class AnpouleScript : MonoBehaviour
 {
-    Vector2 DestinationPos;
-    Vector2 currentPos;
-    [SerializeField] GameObject DamageZonePrehub;
-    Vector3 localAngle;
-    Transform myTrans;
+    private Vector2 DestinationPos;
+    private Vector2 currentPos;
+    [SerializeField] 
+    private GameObject DamageZonePrehub;
+    private Vector3 localAngle;
+    private Transform myTrans;
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +30,20 @@ public class AnpouleScript : MonoBehaviour
     {
         localAngle.z += Time.deltaTime;
         myTrans.localEulerAngles = localAngle;
-        transform.position = Vector2.MoveTowards(transform.position,DestinationPos,4*Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, DestinationPos, 4 * Time.deltaTime);
         currentPos = transform.position;
-        if(currentPos.y == DestinationPos.y){
-            var DameageZone = Instantiate(DamageZonePrehub,transform.position,transform.rotation);
+        if (currentPos.y == DestinationPos.y)
+        {
+            Instantiate(DamageZonePrehub, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Instantiate(DamageZonePrehub, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
     }

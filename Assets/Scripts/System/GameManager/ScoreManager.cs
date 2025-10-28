@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +10,8 @@ public class ScoreManager : MonoBehaviour
     private int digits;
     private int count;
     private int currentScore;
+    private float scoreRate = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +19,9 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "Score 000000000";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void AddScore(int getScore)
     {
-        currentScore += getScore;
+        currentScore += (int)(getScore * scoreRate);
         digits = currentScore;
         count = 0;
         scoreText.text = "Score ";
@@ -43,9 +36,15 @@ public class ScoreManager : MonoBehaviour
         }
         scoreText.text += $"{currentScore}";
     }
-    
+
     public int GetStatus()
     {
         return currentScore;
+    }
+    
+    public void BoostScoreRate(float enhance)
+    {
+        scoreRate *= enhance;
+        Debug.Log("score up");
     }
 }

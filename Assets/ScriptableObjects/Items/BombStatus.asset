@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7aca0855b70c4c348bc8daf746788d1e, type: 3}
-  m_Name: AnpouleData
+  m_Name: BombStatus
   m_EditorClassIdentifier: 
-  NAME: Anpoule
-  INFO: "\u7A7A\u304B\u3089\u85AC\u54C1\u3092\u964D\u3089\u3059"
-  SPRITE: {fileID: 21300000, guid: 37e4f63c73ae0ce48aa1aa7b42a8092e, type: 3}
-  PREHUB: {fileID: 2049877894856953199, guid: 609a636de260b2d48ac95481d7f621c3, type: 3}
+  NAME: Bomb
+  INFO: "\u81EA\u5206\u306E\u5468\u308A\u306E\u30E9\u30F3\u30C0\u30E0\u306A\u4F4D\u7F6E\u3092\u7206\u7834\u3059\u308B"
+  SPRITE: {fileID: 21300000, guid: a9f4a359689ff3f4197ab727d52d0acd, type: 3}
+  PREHUB: {fileID: 3944930976082033017, guid: 0ff9f266bc0afb6489d2a141a4c50beb, type: 3}
