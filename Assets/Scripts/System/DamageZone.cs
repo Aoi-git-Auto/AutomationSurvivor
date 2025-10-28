@@ -1,28 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
+    private float damageTime = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("SelfDestroy");
+        Destroy(this.gameObject, 5f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
     void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Enemy"){
-            other.gameObject.GetComponent<IEnemy>().Damage(0.1f);
-            other.gameObject.GetComponent<IEnemy>().KnockBack(1f);
+        if(other.CompareTag("Enemy")){
+            damageTime += Time.deltaTime;
+            if (damageTime > 1f)
+            {
+                other.gameObject.GetComponent<IEnemy>().Damage(0.5f);
+                damageTime = 0f;
+            }
         }
-    }
-    IEnumerator SelfDestroy(){
-        yield return new WaitForSeconds(5f);
-        Destroy(this.gameObject);
     }
 }
