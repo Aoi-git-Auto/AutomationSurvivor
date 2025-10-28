@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f24f0a561189074192ce71ec383923c, type: 3}
-  m_Name: HelaMushStatus
+  m_Name: SkeletonStatus
   m_EditorClassIdentifier: 
-  MAXHP: 20
-  ATK: 2
-  SPEED: 0.5
-  EXP: 5
-  SCORE: 150
+  MAXHP: 5
+  ATK: 10
+  SPEED: 0.8
+  EXP: 10
+  SCORE: 50
   TYPE: 0
-  PREHUB: {fileID: 2930226351817636238, guid: 0d33327bd6f1ac748b8b21c5163b5e22, type: 3}
+  PREHUB: {fileID: 2851784097291342598, guid: 74e9c39d45b1400408fb94fbd3d98a49, type: 3}
   BGM: {fileID: 0}
