@@ -8,6 +8,8 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected GameObject expPrehub;
     [SerializeField]
     protected GameObject hitEffect;
+    [SerializeField]
+    protected GameObject healItemPrehub;
     protected float enemyATK;
     protected float MaxHP;
     protected float currentHP;
@@ -69,8 +71,16 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
 
     protected void DropEXP()
     {
-        var exp = Instantiate(expPrehub, this.transform.position, this.transform.rotation);
+        var exp = Instantiate(expPrehub, new Vector2(transform.position.x + 0.1f, transform.position.y), transform.rotation);
         exp.GetComponent<ExpOrbScript>().GetExpAmount(enemyEXP);
+    }
+
+    protected void DropHealItem()
+    {
+        if (healItemPrehub != null)
+        {
+            Instantiate(healItemPrehub, new Vector2(transform.position.x - 0.1f, transform.position.y), transform.rotation);
+        }
     }
     
     protected void Hit(GameObject target)
