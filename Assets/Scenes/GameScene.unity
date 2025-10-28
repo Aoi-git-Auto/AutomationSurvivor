@@ -381,8 +381,8 @@ MonoBehaviour:
   hpSlider: {fileID: 1024482580}
   damagedSE: {fileID: 8300000, guid: 342e59ba290e26b409a462fe3580891a, type: 3}
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
-  guardSE: {fileID: 0}
-  destroyedSE: {fileID: 0}
+  guardSE: {fileID: 8300000, guid: 0d2de92519cad894280844cf1c2e4b63, type: 3}
+  destroyedSE: {fileID: 8300000, guid: 8d9636cce23e4014d9032d47cca38808, type: 3}
   shiledPrehub: {fileID: 5217572967941903005, guid: 1c5292e7ae571494d9d33130ecd6961d, type: 3}
 --- !u!82 &194584444
 AudioSource:

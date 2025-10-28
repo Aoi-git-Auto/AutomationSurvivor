@@ -4,9 +4,14 @@ public class DamageZone : MonoBehaviour
 {
     private float damageTime = 1f;
 
+    [SerializeField]
+    private AudioClip poisenedSE;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Destroy(this.gameObject, 5f);
     }
 
@@ -16,6 +21,7 @@ public class DamageZone : MonoBehaviour
             damageTime += Time.deltaTime;
             if (damageTime > 1f)
             {
+                audioSource.PlayOneShot(poisenedSE);
                 other.gameObject.GetComponent<IEnemy>().Damage(0.5f);
                 damageTime = 0f;
             }

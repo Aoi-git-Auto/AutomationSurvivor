@@ -9,9 +9,15 @@ public class ExplosionDamage : MonoBehaviour
     [SerializeField]
     private float knockback = 1.5f;
 
+    [SerializeField]
+    private AudioClip explosionSE;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(explosionSE);
         Destroy(this.gameObject, 0.12f);
     }
 
