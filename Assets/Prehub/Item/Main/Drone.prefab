@@ -98,4 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayPrehub: {fileID: 6048983359031307571, guid: 9ae86b488935d1e46bbf9ad57b6c8817, type: 3}
-  RayStatus: {fileID: 11400000, guid: 6eb95c61b5a8cee4aab5a0c4ff5add87, type: 2}
+  speed: 360
+  radius: 0.5
