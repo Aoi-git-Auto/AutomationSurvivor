@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f24f0a561189074192ce71ec383923c, type: 3}
-  m_Name: BossEnemy
+  m_Name: DaemonStatus
   m_EditorClassIdentifier: 
   MAXHP: 120
-  ATK: 15
-  SPEED: 1
-  EXP: 150
-  SCORE: 1500
+  ATK: 20
+  SPEED: 0.9
+  EXP: 200
+  SCORE: 3000
   TYPE: 2
-  PREHUB: {fileID: 1362594501308954412, guid: 80b3141249055ac46a8794709680a731, type: 3}
+  PREHUB: {fileID: 1675598152843906191, guid: 03cbf6dc59ad50a41890dbc01de654e2, type: 3}
   BGM: {fileID: 8300000, guid: 7112a56a88ec2b54cbdd9ac9945d49b4, type: 3}
