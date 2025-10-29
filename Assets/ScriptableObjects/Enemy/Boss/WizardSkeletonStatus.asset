@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f24f0a561189074192ce71ec383923c, type: 3}
   m_Name: WizardSkeletonStatus
   m_EditorClassIdentifier: 
-  MAXHP: 200
+  MAXHP: 100
   ATK: 10
-  SPEED: 0.7
-  EXP: 150
+  SPEED: 0.8
+  EXP: 100
   SCORE: 1000
   TYPE: 2
   PREHUB: {fileID: 7600249771878481470, guid: 76f5ec6e19a36174e9afcc42cec5dd06, type: 3}

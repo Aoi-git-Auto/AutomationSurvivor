@@ -76,9 +76,10 @@ public class WizardEnemy : AbstractEnemy
         Sprite original = spriteRenderer.sprite;
         spriteRenderer.sprite = summonSprite;
         yield return new WaitForSeconds(0.3f);
-        Instantiate(summonEffect, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.2f), Quaternion.identity);
-        yield return new WaitForSeconds(0.1f);
-        var enemy = Instantiate(summonEnemy, new Vector2(transform.position.x + 0.2f, transform.position.y), Quaternion.identity);
+        var effect = Instantiate(summonEffect, new Vector2(transform.position.x + 0.4f, transform.position.y - 0.3f), Quaternion.identity);
+        yield return new WaitForSeconds(0.3f);
+        var enemy = Instantiate(summonEnemy, new Vector2(transform.position.x + 0.4f, transform.position.y), Quaternion.identity);
+        Destroy(effect);
         enemy.GetComponent<AbstractEnemy>().Initialize(summonStatus);
         yield return new WaitForSeconds(0.5f);
         spriteRenderer.sprite = original;
