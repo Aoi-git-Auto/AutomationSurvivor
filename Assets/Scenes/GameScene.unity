@@ -568,8 +568,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328003137}
-  - component: {fileID: 328003138}
   - component: {fileID: 328003139}
+  - component: {fileID: 328003140}
   m_Layer: 0
   m_Name: BossEnemyGenerator
   m_TagString: Untagged
@@ -592,24 +592,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1912957944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &328003138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328003136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e223115fa9c8bb248894f7d02c2f01d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dataBase: {fileID: 11400000, guid: d5b318389969b3e43adfb08fbecdb615, type: 2}
-  player: {fileID: 194584434}
-  bossArrivingEffect: {fileID: 2024874613524920679, guid: 6fac1c0cbe31dd8478bd4be9b6007189, type: 3}
-  canvas: {fileID: 1392359353}
-  bossArrival: 0
-  bossArrivalSE: {fileID: 8300000, guid: 29c6bbd8bf2cb07469c4bb085a869825, type: 3}
 --- !u!82 &328003139
 AudioSource:
   m_ObjectHideFlags: 0
@@ -706,6 +688,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &328003140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328003136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8bc06aea47c7745a11becf043b6ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataBase: {fileID: 11400000, guid: d5b318389969b3e43adfb08fbecdb615, type: 2}
+  player: {fileID: 194584434}
+  bossArrivingEffect: {fileID: 2024874613524920679, guid: 6fac1c0cbe31dd8478bd4be9b6007189, type: 3}
+  canvas: {fileID: 1392359353}
+  bossArrivalSE: {fileID: 8300000, guid: 29c6bbd8bf2cb07469c4bb085a869825, type: 3}
 --- !u!1001 &392064210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4570,7 +4569,6 @@ MonoBehaviour:
   player: {fileID: 194584434}
   bossArrivingEffect: {fileID: 0}
   canvas: {fileID: 0}
-  bossArrival: 0
   bossArrivalSE: {fileID: 0}
 --- !u!1 &777236319
 GameObject:
@@ -5847,7 +5845,6 @@ MonoBehaviour:
   player: {fileID: 194584434}
   bossArrivingEffect: {fileID: 0}
   canvas: {fileID: 0}
-  bossArrival: 0
   bossArrivalSE: {fileID: 0}
 --- !u!1 &1376660936
 GameObject:

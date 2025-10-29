@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BossEnemy : AbstractEnemy
 {
@@ -8,7 +9,7 @@ public class BossEnemy : AbstractEnemy
     private GameObject hpBar;
     private BossHPBarContoroller bar;
     private GameObject hp;
-    private GameObject bossGenerator;
+    private Animator animator;
 
     [SerializeField]
     private AudioClip dyingSE;
@@ -18,32 +19,41 @@ public class BossEnemy : AbstractEnemy
     {
         base.Start();
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         GameObject canvas = GameObject.Find("UICanvas");
 
         AudioManager.instance.PlayBossBGM(bgm);
-        bossGenerator = GameObject.Find("BossEnemyGenerator");
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
 
         bar.InitializeHPbar(MaxHP, this.name);
     }
-    
+
     public override void Damage(float damage)
     {
         var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(effect, 0.1f);
         currentHP -= damage;
         bar.UpdateHP(currentHP);
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
-            Destroy(hp);
-            if (bossGenerator != null)
-            {
-                bossGenerator.GetComponent<EnemyGenerator>().bossArrival = false;
-            }
-            audioSource.PlayOneShot(dyingSE);
-            AudioManager.instance.PlayinGameBGM();
-            Die();
+            BossDying();
         }
+    }
+    
+    private void BossDying()
+    {
+        Destroy(hp);
+        boxCollider.enabled = false;
+        audioSource.PlayOneShot(dyingSE);
+        spriteRenderer.color = Color.red;
+        canMove = false;
+        animator.enabled = false;
+        spriteRenderer.DOFade(0f, 1f).OnComplete(() =>
+        {
+            AudioManager.instance.PlayinGameBGM();
+            GMScript.instance.bossArriving = false;
+            Die();
+        });
     }
 }

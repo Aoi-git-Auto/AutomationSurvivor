@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyGenerator : MonoBehaviour
+public class BossGenerator : MonoBehaviour
 {
     [SerializeField]
     private EnemyDataBase dataBase;
@@ -13,7 +13,7 @@ public class EnemyGenerator : MonoBehaviour
     private GameObject canvas;
     private Vector2 playerPos;
     private float currentTime = 0f;
-    private float span;
+    private float span = 40f;
     private int rndUD;
     private int rndLR;
     private Vector2 enemySpwanPos;
@@ -26,22 +26,20 @@ public class EnemyGenerator : MonoBehaviour
 
     void Start()
     {
-        if (dataBase.enemies[0].TYPE == Type.NORMAL)
-        {
-            span = 2f;
-        }
-        else if (dataBase.enemies[0].TYPE == Type.ELITE)
-        {
-            span = 10f;
-        }
+        audioSource = GetComponent<AudioSource>();
     }
     
     // Update is called once per frame
     void Update()
     {
         currentTime += Time.deltaTime;
-        if (currentTime >= span)
+        if (currentTime >= span && !GMScript.instance.bossArriving)
         {
+            GMScript.instance.bossArriving = true;
+            audioSource.PlayOneShot(bossArrivalSE);
+            var effect = Instantiate(bossArrivingEffect, canvas.transform);
+            Destroy(effect, 1f);
+            Debug.Log(GMScript.instance.bossArriving);
             StartCoroutine(GenerateEnemy());
             currentTime = 0f;
         }

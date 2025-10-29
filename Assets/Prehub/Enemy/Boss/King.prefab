@@ -203,6 +203,7 @@ MonoBehaviour:
   hpBar: {fileID: 7229907432046488897, guid: 73e828ec2e99d924da88d00450e25d70, type: 3}
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
   warpSE: {fileID: 8300000, guid: 2ffb8cd7b582c4748b33ed85ed937c6b, type: 3}
+  beamEffectSE: {fileID: 8300000, guid: 16fdc2f68847a4743bb2ecce8b96fd1f, type: 3}
 --- !u!82 &4188870877230297934
 AudioSource:
   m_ObjectHideFlags: 0

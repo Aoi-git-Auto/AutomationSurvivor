@@ -18,6 +18,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected AudioClip bgm;
     protected Rigidbody2D rb;
     protected SpriteRenderer spriteRenderer;
+    protected BoxCollider2D boxCollider;
 
     protected GameObject player;
     protected Vector3 playerPos;
@@ -30,6 +31,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Start is called before the first frame update
@@ -89,6 +91,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
 
     public void KnockBack(float knockBack)
     {
+        if (!canMove) return;
         Vector2 directrion = (transform.position - playerPos).normalized;
         rb.velocity = directrion * knockBack;
         StartCoroutine(StopKnockBack(0.5f));

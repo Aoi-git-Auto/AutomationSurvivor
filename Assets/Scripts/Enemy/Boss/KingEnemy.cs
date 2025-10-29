@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
+using DG.Tweening;
 
 public class KingEnemy : AbstractEnemy
 {
@@ -20,12 +20,12 @@ public class KingEnemy : AbstractEnemy
     private GameObject itemEffectPrehub;
     [SerializeField]
     private GameObject hallPrehub;
+    private bool canAttack = true;
 
     [SerializeField]
     private GameObject hpBar;
     private BossHPBarContoroller bar;
     private GameObject hp;
-    private GameObject bossGenerator;
     private Animator animator;
 
     [SerializeField]
@@ -47,7 +47,6 @@ public class KingEnemy : AbstractEnemy
         GameObject canvas = GameObject.Find("UICanvas");
 
         AudioManager.instance.PlayBossBGM(bgm);
-        bossGenerator = GameObject.Find("BossEnemyGenerator");
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
 
@@ -56,6 +55,7 @@ public class KingEnemy : AbstractEnemy
 
     private void Update()
     {
+        if (!canAttack) return;
         attackTime += Time.deltaTime;
         if(attackTime > 5f)
         {
@@ -73,14 +73,7 @@ public class KingEnemy : AbstractEnemy
         bar.UpdateHP(currentHP);
         if (currentHP <= 0)
         {
-            Destroy(hp);
-            if (bossGenerator != null)
-            {
-                bossGenerator.GetComponent<EnemyGenerator>().bossArrival = false;
-            }
-            audioSource.PlayOneShot(dyingSE);
-            AudioManager.instance.PlayinGameBGM();
-            Die();
+            BossDying();
         }
     }
 
@@ -131,7 +124,7 @@ public class KingEnemy : AbstractEnemy
         canMove = true;
         animator.enabled = true;
     }
-    
+
     private IEnumerator SuctionHall()
     {
         canMove = false;
@@ -143,5 +136,22 @@ public class KingEnemy : AbstractEnemy
         Instantiate(hallPrehub, playerPos, Quaternion.identity);
         canMove = true;
         animator.enabled = true;
+    }
+    
+    private void BossDying()
+    {
+        Destroy(hp);
+        boxCollider.enabled = false;
+        canAttack = false;
+        audioSource.PlayOneShot(dyingSE);
+        spriteRenderer.color = Color.red;
+        canMove = false;
+        animator.enabled = false;
+        spriteRenderer.DOFade(0f, 1f).OnComplete(() =>
+        {
+            AudioManager.instance.PlayinGameBGM();
+            GMScript.instance.bossArriving = false;
+            Die();
+        });
     }
 }

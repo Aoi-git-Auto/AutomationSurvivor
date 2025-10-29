@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
+using DG.Tweening;
 
 public class WizardEnemy : AbstractEnemy
 {
@@ -9,8 +8,8 @@ public class WizardEnemy : AbstractEnemy
     private GameObject hpBar;
     private BossHPBarContoroller bar;
     private GameObject hp;
-    private GameObject bossGenerator;
     private float attackTime = 0f;
+    private bool canAttack = true;
     [SerializeField]
     private GameObject summonEnemy;
     [SerializeField]
@@ -35,7 +34,6 @@ public class WizardEnemy : AbstractEnemy
         GameObject canvas = GameObject.Find("UICanvas");
 
         AudioManager.instance.PlayBossBGM(bgm);
-        bossGenerator = GameObject.Find("BossEnemyGenerator");
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
 
@@ -44,6 +42,7 @@ public class WizardEnemy : AbstractEnemy
 
     private void Update()
     {
+        if (!canAttack) return;
         attackTime += Time.deltaTime;
         if(attackTime > 3f)
         {
@@ -60,17 +59,10 @@ public class WizardEnemy : AbstractEnemy
         bar.UpdateHP(currentHP);
         if (currentHP <= 0)
         {
-            Destroy(hp);
-            if (bossGenerator != null)
-            {
-                bossGenerator.GetComponent<EnemyGenerator>().bossArrival = false;
-            }
-            audioSource.PlayOneShot(dyingSE);
-            AudioManager.instance.PlayinGameBGM();
-            Die();
+            BossDying();
         }
     }
-    
+
     private IEnumerator Summon()
     {
         canMove = false;
@@ -89,5 +81,22 @@ public class WizardEnemy : AbstractEnemy
         spriteRenderer.sprite = original;
         canMove = true;
         animator.enabled = true;
+    }
+    
+    private void BossDying()
+    {
+        Destroy(hp);
+        boxCollider.enabled = false;
+        canAttack = false;
+        audioSource.PlayOneShot(dyingSE);
+        spriteRenderer.color = Color.red;
+        canMove = false;
+        animator.enabled = false;
+        spriteRenderer.DOFade(0f, 1f).OnComplete(() =>
+        {
+            AudioManager.instance.PlayinGameBGM();
+            GMScript.instance.bossArriving = false;
+            Die();
+        });
     }
 }
