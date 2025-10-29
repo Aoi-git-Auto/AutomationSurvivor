@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
@@ -6,6 +7,10 @@ public class EnemyGenerator : MonoBehaviour
     private EnemyDataBase dataBase;
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject bossArrivingEffect;
+    [SerializeField]
+    private GameObject canvas;
     private Vector2 playerPos;
     private float currentTime = 0f;
     private float span;
@@ -42,8 +47,10 @@ public class EnemyGenerator : MonoBehaviour
             if (dataBase.enemies[0].TYPE == Type.BOSS)
             {
                 bossArrival = true;
+                var effect = Instantiate(bossArrivingEffect, canvas.transform);
+                Destroy(effect, 1f);
             }
-            GenerateEnemy();
+            StartCoroutine(GenerateEnemy());
             currentTime = 0f;
         }
         if (GMScript.instance.currentTime <= 150 && !inHalf)
@@ -58,7 +65,7 @@ public class EnemyGenerator : MonoBehaviour
         }
     }
     
-    private void GenerateEnemy()
+    private IEnumerator GenerateEnemy()
     {
         playerPos = player.transform.position;
         rndUD = Random.Range(0,2);
@@ -91,6 +98,7 @@ public class EnemyGenerator : MonoBehaviour
         int randomIndex = Random.Range(0, dataBase.enemies.Count);
         GameObject rndEnemy = dataBase.enemies[randomIndex].PREHUB;
 
+        yield return new WaitForSeconds(1f);
         var enemy = Instantiate(rndEnemy, enemySpwanPos, transform.rotation);
         enemy.GetComponent<IEnemy>().Initialize(dataBase.enemies[randomIndex]);
     }
