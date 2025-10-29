@@ -103,8 +103,8 @@ public class KingEnemy : AbstractEnemy
         yield return new WaitForSeconds(0.5f);
         spriteRenderer.enabled = false;
         Destroy(effect);
-        transform.position = playerPos;
         yield return new WaitForSeconds(0.5f);
+        transform.position = playerPos;
         effect = Instantiate(warpGatePrehub, transform.position, Quaternion.identity);
         Destroy(effect, 0.5f);
         spriteRenderer.enabled = true;
