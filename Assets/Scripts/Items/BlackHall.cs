@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlackHall : MonoBehaviour
@@ -7,9 +5,15 @@ public class BlackHall : MonoBehaviour
     [SerializeField]
     private float pullForce = 5f;
 
+    [SerializeField]
+    private AudioClip hallSE;
+    private AudioSource audioSource;
+
     void Start()
     {
         Destroy(this.gameObject, 2f);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(hallSE);
     }
 
     void OnTriggerStay2D(Collider2D other)

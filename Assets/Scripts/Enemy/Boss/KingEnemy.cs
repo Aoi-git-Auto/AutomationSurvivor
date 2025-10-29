@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class KingEnemy : AbstractEnemy
@@ -29,6 +30,10 @@ public class KingEnemy : AbstractEnemy
 
     [SerializeField]
     private AudioClip dyingSE;
+    [SerializeField]
+    private AudioClip warpSE;
+    [SerializeField]
+    private AudioClip beamEffectSE;
     private AudioSource audioSource;
 
     protected new void Start()
@@ -99,12 +104,14 @@ public class KingEnemy : AbstractEnemy
     {
         canMove = false;
         animator.enabled = false;
+        audioSource.PlayOneShot(warpSE);
         var effect = Instantiate(warpGatePrehub, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
         spriteRenderer.enabled = false;
         Destroy(effect);
         yield return new WaitForSeconds(0.5f);
         transform.position = playerPos;
+        audioSource.PlayOneShot(warpSE);
         effect = Instantiate(warpGatePrehub, transform.position, Quaternion.identity);
         Destroy(effect, 0.5f);
         spriteRenderer.enabled = true;
@@ -116,6 +123,7 @@ public class KingEnemy : AbstractEnemy
     {
         canMove = false;
         animator.enabled = false;
+        audioSource.PlayOneShot(beamEffectSE);
         var effect = Instantiate(itemEffectPrehub, playerPos, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         Destroy(effect);
@@ -128,6 +136,7 @@ public class KingEnemy : AbstractEnemy
     {
         canMove = false;
         animator.enabled = false;
+        audioSource.PlayOneShot(beamEffectSE);
         var effect = Instantiate(itemEffectPrehub, playerPos, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         Destroy(effect);

@@ -296,3 +296,4 @@ MonoBehaviour:
   rushTime: 0.4
   rushSpeed: 8
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
+  rushSE: {fileID: 8300000, guid: 0ff0f2f0a29680b4dbfbc7c3c168c619, type: 3}

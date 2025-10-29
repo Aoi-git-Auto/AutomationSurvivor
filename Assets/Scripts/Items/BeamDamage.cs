@@ -7,9 +7,15 @@ public class BeamDamage : MonoBehaviour
     [SerializeField]
     private float damage = 30f;
 
+    [SerializeField]
+    private AudioClip beamSE;
+    private AudioSource audioSource;
+
     void Start()
     {
         Destroy(this.gameObject, 2f);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(beamSE);
     }
     
     void OnTriggerStay2D(Collider2D other)

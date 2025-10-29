@@ -21,6 +21,10 @@ public class EnemyGenerator : MonoBehaviour
     private bool inHalf = false;
     private bool inLast = false;
 
+    [SerializeField]
+    private AudioClip bossArrivalSE;
+    private AudioSource audioSource;
+
     void Start()
     {
         if (dataBase.enemies[0].TYPE == Type.NORMAL)
@@ -35,6 +39,7 @@ public class EnemyGenerator : MonoBehaviour
         else if (dataBase.enemies[0].TYPE == Type.BOSS)
         {
             span = 40f;
+            audioSource = GetComponent<AudioSource>();
         }
     }
     
@@ -47,6 +52,7 @@ public class EnemyGenerator : MonoBehaviour
             if (dataBase.enemies[0].TYPE == Type.BOSS)
             {
                 bossArrival = true;
+                audioSource.PlayOneShot(bossArrivalSE);
                 var effect = Instantiate(bossArrivingEffect, canvas.transform);
                 Destroy(effect, 1f);
             }

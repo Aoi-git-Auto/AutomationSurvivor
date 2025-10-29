@@ -569,6 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328003137}
   - component: {fileID: 328003138}
+  - component: {fileID: 328003139}
   m_Layer: 0
   m_Name: BossEnemyGenerator
   m_TagString: Untagged
@@ -608,6 +609,103 @@ MonoBehaviour:
   bossArrivingEffect: {fileID: 2024874613524920679, guid: 6fac1c0cbe31dd8478bd4be9b6007189, type: 3}
   canvas: {fileID: 1392359353}
   bossArrival: 0
+  bossArrivalSE: {fileID: 8300000, guid: 29c6bbd8bf2cb07469c4bb085a869825, type: 3}
+--- !u!82 &328003139
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328003136}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &392064210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4473,6 +4571,7 @@ MonoBehaviour:
   bossArrivingEffect: {fileID: 0}
   canvas: {fileID: 0}
   bossArrival: 0
+  bossArrivalSE: {fileID: 0}
 --- !u!1 &777236319
 GameObject:
   m_ObjectHideFlags: 0
@@ -5749,6 +5848,7 @@ MonoBehaviour:
   bossArrivingEffect: {fileID: 0}
   canvas: {fileID: 0}
   bossArrival: 0
+  bossArrivalSE: {fileID: 0}
 --- !u!1 &1376660936
 GameObject:
   m_ObjectHideFlags: 0

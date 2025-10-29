@@ -20,6 +20,8 @@ public class DaemonEnemy : AbstractEnemy
 
     [SerializeField]
     private AudioClip dyingSE;
+    [SerializeField]
+    private AudioClip rushSE;
     private AudioSource audioSource;
 
     protected new void Start()
@@ -78,6 +80,7 @@ public class DaemonEnemy : AbstractEnemy
         yield return new WaitForSeconds(0.5f);
 
         float elapsed = 0f;
+        audioSource.PlayOneShot(rushSE);
         while (elapsed < rushTime)
         {
             transform.position += (Vector3)(direction * rushSpeed * Time.deltaTime);

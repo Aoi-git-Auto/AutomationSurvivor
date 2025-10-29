@@ -202,6 +202,7 @@ MonoBehaviour:
   summonSprite: {fileID: 478924090, guid: ad29795c896f9f449a9062a5ba89e566, type: 3}
   summonStatus: {fileID: 11400000, guid: 9ac580796592e824ea8b5e521b06836a, type: 2}
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
+  summonSE: {fileID: 8300000, guid: e2d8537c5bf331f47a2e7bd83cbd27db, type: 3}
 --- !u!82 &6287805409289403075
 AudioSource:
   m_ObjectHideFlags: 0

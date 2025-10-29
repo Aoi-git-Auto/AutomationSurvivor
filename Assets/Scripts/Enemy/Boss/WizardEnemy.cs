@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class WizardEnemy : AbstractEnemy
@@ -22,6 +23,8 @@ public class WizardEnemy : AbstractEnemy
 
     [SerializeField]
     private AudioClip dyingSE;
+    [SerializeField]
+    private AudioClip summonSE;
     private AudioSource audioSource;
 
     protected new void Start()
@@ -78,6 +81,7 @@ public class WizardEnemy : AbstractEnemy
         yield return new WaitForSeconds(0.3f);
         var effect = Instantiate(summonEffect, new Vector2(transform.position.x + 0.4f, transform.position.y - 0.3f), Quaternion.identity);
         yield return new WaitForSeconds(0.3f);
+        audioSource.PlayOneShot(summonSE);
         var enemy = Instantiate(summonEnemy, new Vector2(transform.position.x + 0.4f, transform.position.y), Quaternion.identity);
         Destroy(effect);
         enemy.GetComponent<AbstractEnemy>().Initialize(summonStatus);
