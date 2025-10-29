@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f24f0a561189074192ce71ec383923c, type: 3}
-  m_Name: GhostStatus
+  m_Name: ExpSlimeStatus
   m_EditorClassIdentifier: 
-  MAXHP: 30
-  ATK: 5
-  SPEED: 0.7
-  EXP: 50
-  SCORE: 700
+  MAXHP: 50
+  ATK: 1
+  SPEED: 0.2
+  EXP: 100
+  SCORE: 900
   TYPE: 1
-  PREHUB: {fileID: 4596841665176541531, guid: f9752d3afcc178e43bd43296663b45a1, type: 3}
+  PREHUB: {fileID: 4546041888521143423, guid: db1ce1d6dd3d6e24f88f34a0c2e473df, type: 3}
   BGM: {fileID: 0}
