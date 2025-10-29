@@ -117,6 +117,7 @@ public class SceneController : MonoBehaviour
         AudioManager.instance.PlayinGameBGM();
         GMScript.instance.inGame = true;
         GMScript.instance.currentTime = time;
+        GMScript.instance.bossArriving = false;
         Time.timeScale = 1;
         async.allowSceneActivation = true;
     }

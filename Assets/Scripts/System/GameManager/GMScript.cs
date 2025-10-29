@@ -15,6 +15,7 @@ public class GMScript : MonoBehaviour
     private GameObject scoreManager;
     public float currentTime = 300f;
     public bool inGame;
+    public bool bossArriving;
     private bool isDead = true;
     // Start is called before the first frame update
     void Awake()
