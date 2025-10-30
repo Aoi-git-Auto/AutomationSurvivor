@@ -71,11 +71,11 @@ public class WizardEnemy : AbstractEnemy
         Sprite original = spriteRenderer.sprite;
         spriteRenderer.sprite = summonSprite;
         yield return new WaitForSeconds(0.3f);
-        var effect = Instantiate(summonEffect, new Vector2(transform.position.x + 0.4f, transform.position.y - 0.3f), Quaternion.identity);
-        yield return new WaitForSeconds(0.3f);
         audioSource.PlayOneShot(summonSE);
+        var effect = Instantiate(summonEffect, new Vector2(transform.position.x + 0.4f, transform.position.y - 0.3f), Quaternion.identity);
+        Destroy(effect, 0.3f);
+        yield return new WaitForSeconds(0.3f);
         var enemy = Instantiate(summonEnemy, new Vector2(transform.position.x + 0.4f, transform.position.y), Quaternion.identity);
-        Destroy(effect);
         enemy.GetComponent<AbstractEnemy>().Initialize(summonStatus);
         yield return new WaitForSeconds(0.5f);
         spriteRenderer.sprite = original;
