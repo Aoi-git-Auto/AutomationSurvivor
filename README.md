@@ -17,3 +17,28 @@ https://drive.google.com/drive/folders/10717sQ_udE7D9kLg78ssyouIiMH0YQOr?usp=dri
 
 ## ご意見・ご要望について
 form作成中…
+
+## お借りした素材
+以下敬称略
+<br>
+タイルチップ・キャラチップ・小物など
+<br>
+ぴぽや　https://pipoya.net/
+<br>
+DOT ILLUST　https://dot-illust.net/
+<br>
+BGN・SEなど
+<br>
+DOVA SYMDROME Heitaro Ashibe(https://dova-s.jp/_contents/author/profile457.html) 鋼鉄の國 https://dova-s.jp/bgm/play22727.html
+<br>
+D-elf.com https://www.d-elf.com/archives/6456.html
+<br>
+H/MIX GALLERY http://www.hmix.net/
+<br>
+Springin https://www.springin.org/sound-stock/
+<br>
+効果音ラボ https://soundeffect-lab.info/
+<br>
+Unityアセット
+<br>
+DOTween
