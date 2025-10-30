@@ -383,6 +383,8 @@ MonoBehaviour:
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
   guardSE: {fileID: 8300000, guid: 0d2de92519cad894280844cf1c2e4b63, type: 3}
   destroyedSE: {fileID: 8300000, guid: 8d9636cce23e4014d9032d47cca38808, type: 3}
+  healSE: {fileID: 8300000, guid: dacbfdae58427754c89e0d2990ebc9ba, type: 3}
+  statusUpSE: {fileID: 8300000, guid: 146bf5118dc904b4d9ceb61457d98003, type: 3}
   shiledPrehub: {fileID: 5217572967941903005, guid: 1c5292e7ae571494d9d33130ecd6961d, type: 3}
   playerDiePrehub: {fileID: 841477947802677623, guid: 8b8ea2072e8fc02409d11f2e0b942c37, type: 3}
 --- !u!82 &194584444

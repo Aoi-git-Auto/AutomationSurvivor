@@ -23,6 +23,9 @@ public class GMScript : MonoBehaviour
     private AudioClip playerDieBGM;
     [SerializeField]
     private AudioClip clearBGM;
+    [SerializeField]
+    private AudioClip scoreSE;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Awake()
@@ -41,6 +44,7 @@ public class GMScript : MonoBehaviour
     void Start()
     {
         AudioManager.instance.PlayTitleBGM();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -114,6 +118,7 @@ public class GMScript : MonoBehaviour
         .AppendInterval(0.3f)
         .AppendCallback(() =>
         {
+            audioSource.PlayOneShot(scoreSE);
             scoreText.text = finalscore.ToString();
         })
         .AppendInterval(1.5f)

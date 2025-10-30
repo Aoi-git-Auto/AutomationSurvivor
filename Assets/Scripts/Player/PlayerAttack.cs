@@ -6,18 +6,24 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField]
     private GameObject attackObj;
-    [SerializeField] StatusData statusdata;
+    [SerializeField] 
+    private StatusData statusdata;
     private float attack;
     private float nockback;
     private float currentTime = 0f;
     private Vector2 attackPos;
     private GameObject player;
 
+    [SerializeField]
+    private AudioClip statusUpSE;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         attack = statusdata.ATK;
         nockback = statusdata.NockBack;
+        audioSource = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -42,6 +48,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void AddPower(float power)
     {
+        audioSource.PlayOneShot(statusUpSE);
         attack += power;
         Debug.Log("Power UP");
     }

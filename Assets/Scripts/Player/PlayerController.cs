@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,11 @@ public class PlayerController : MonoBehaviour,IDamageable
     private AudioClip guardSE;
     [SerializeField]
     private AudioClip destroyedSE;
+    [SerializeField]
+    private AudioClip healSE;
+    [SerializeField]
+    private AudioClip statusUpSE;
+
     [SerializeField]
     private GameObject shiledPrehub;
     private bool isGuaded = false;
@@ -125,6 +131,7 @@ public class PlayerController : MonoBehaviour,IDamageable
     {
         if (hpSlider != null)
         {
+            audioSource.PlayOneShot(healSE);
             if (currentHP + heal > statusdata.MAXHP)
             {
                 heal = statusdata.MAXHP - currentHP;
@@ -137,6 +144,7 @@ public class PlayerController : MonoBehaviour,IDamageable
 
     public void AddSpeed(float amount)
     {
+        audioSource.PlayOneShot(statusUpSE);
         speed = speed * amount;
         Debug.Log("Speed UP!");
     }
@@ -148,13 +156,14 @@ public class PlayerController : MonoBehaviour,IDamageable
         animator.enabled = false;
         controller.enabled = false;
         spritePlayer.enabled = false;
+        rb.velocity = Vector2.zero;
         foreach(Transform child in transform)
         {
             child.gameObject.SetActive(false);
         }
         audioSource.PlayOneShot(dyingSE);
         Instantiate(playerDiePrehub, transform.position, Quaternion.identity);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(0.5f);
         GMScript.instance.GameEnd();
     }
 
