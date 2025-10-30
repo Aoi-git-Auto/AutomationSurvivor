@@ -10,7 +10,7 @@ public class StageGenerator : MonoBehaviour
     private Transform playerTrans;
 
     private Vector2Int currentCenter;
-    private int range = 15;
+    private int range = 30;
     private float tileSize = 1f;
     private Dictionary<Vector2Int, GameObject> tiles = new Dictionary<Vector2Int, GameObject>();
     // Start is called before the first frame update

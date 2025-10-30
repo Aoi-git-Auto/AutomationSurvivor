@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
-using UnityEditor.Search;
 
 public class GMScript : MonoBehaviour
 {
@@ -107,14 +105,14 @@ public class GMScript : MonoBehaviour
         RectTransform buttonRectR = endRetry.GetComponent<RectTransform>();
         Vector2 endPosL = buttonRectL.anchoredPosition;
         Vector2 endPosR = buttonRectR.anchoredPosition;
-        buttonRectL.anchoredPosition = endPosL + new Vector2(0, -300);
-        buttonRectR.anchoredPosition = endPosR + new Vector2(0, -300);
+        buttonRectL.anchoredPosition = endPosL + new Vector2(0, -1000);
+        buttonRectR.anchoredPosition = endPosR + new Vector2(0, -1000);
 
         int finalscore = scoreManager.GetComponent<ScoreManager>().GetStatus();
 
         seq.Append(gameEndText.DOFade(1f, 1f))
         .AppendInterval(1f)
-        .Append(gameEndText.rectTransform.DOAnchorPosY(gameEndText.rectTransform.anchoredPosition.y + 60f, 0.6f))
+        .Append(gameEndText.rectTransform.DOAnchorPosY(gameEndText.rectTransform.anchoredPosition.y + 220f, 0.6f))
         .AppendInterval(0.3f)
         .AppendCallback(() =>
         {

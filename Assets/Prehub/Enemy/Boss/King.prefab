@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -142,18 +142,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.033843324, y: 0.012306653}
+  m_Offset: {x: 0.110925645, y: 0.036394835}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25642905, y: 0.41846675}
+  m_Size: {x: 0.9308992, y: 1.4590776}
   m_EdgeRadius: 0
 --- !u!50 &6039856517936142613
 Rigidbody2D:
@@ -201,7 +201,7 @@ MonoBehaviour:
   beamPrehub: {fileID: 5853608259882519462, guid: e604d15d75f774244a88aa7ec1ed8916, type: 3}
   itemEffectPrehub: {fileID: 8014179334870704806, guid: e4156937a8619284798fec69ec0f21e8, type: 3}
   hallPrehub: {fileID: 5885971109139422314, guid: e8ddbf4350799ff4090bfb7ed79f52ef, type: 3}
-  hpBar: {fileID: 7229907432046488897, guid: 73e828ec2e99d924da88d00450e25d70, type: 3}
+  hpBar: {fileID: 3085432065975460977, guid: 6f8b69c732739ac41ad0f01e6923399a, type: 3}
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
   warpSE: {fileID: 8300000, guid: 2ffb8cd7b582c4748b33ed85ed937c6b, type: 3}
   beamEffectSE: {fileID: 8300000, guid: 16fdc2f68847a4743bb2ecce8b96fd1f, type: 3}

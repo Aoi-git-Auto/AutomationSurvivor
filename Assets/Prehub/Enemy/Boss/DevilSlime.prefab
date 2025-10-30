@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2.7, y: 2.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -142,18 +142,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005176306, y: -0.11732956}
+  m_Offset: {x: 0.034052074, y: -0.4084934}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 4.8, y: 4.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2902022, y: 0.24534084}
+  m_Size: {x: 0.9254688, y: 0.65441394}
   m_EdgeRadius: 0
 --- !u!50 &1666124039327881844
 Rigidbody2D:
@@ -197,7 +197,7 @@ MonoBehaviour:
   expPrehub: {fileID: 2021388790842283694, guid: d5307df2c0cf10f409f25a8f657ae3b1, type: 3}
   hitEffect: {fileID: 6756226923323038359, guid: 28212569ef39298468139300f055fcae, type: 3}
   chestPrehub: {fileID: 2478843595807617506, guid: 7b0d24e51d8e58e458f64d44bd7ea069, type: 3}
-  hpBar: {fileID: 7229907432046488897, guid: 73e828ec2e99d924da88d00450e25d70, type: 3}
+  hpBar: {fileID: 3085432065975460977, guid: 6f8b69c732739ac41ad0f01e6923399a, type: 3}
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
 --- !u!82 &5331612051114651164
 AudioSource:

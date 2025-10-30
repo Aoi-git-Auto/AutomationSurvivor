@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHP: 20
   ATK: 2
-  SPEED: 0.5
+  SPEED: 1
   EXP: 5
   SCORE: 150
   TYPE: 0
