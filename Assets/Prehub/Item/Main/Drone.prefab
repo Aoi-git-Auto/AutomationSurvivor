@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed40c45f8867e7a479d8decdbf67f0b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayPrehub: {fileID: 6048983359031307571, guid: 9ae86b488935d1e46bbf9ad57b6c8817, type: 3}
+  rayPrehub: {fileID: 96597941266735592, guid: 8a2c453e025374d44b917f0647285942, type: 3}
   speed: 360
-  radius: 0.5
+  radius: 1
   launchSE: {fileID: 8300000, guid: ed9f3b744fd805945b5c661c37c65c1d, type: 3}
 --- !u!82 &-4417890142290964855
 AudioSource:

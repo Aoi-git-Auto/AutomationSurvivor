@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class GameUIBinder : MonoBehaviour
@@ -14,7 +15,7 @@ public class GameUIBinder : MonoBehaviour
     [SerializeField]
     private Text scoreText;
     [SerializeField]
-    private Text timerText;
+    private TMP_Text timerText;
     [SerializeField]
     private Button retryButton;
     [SerializeField]

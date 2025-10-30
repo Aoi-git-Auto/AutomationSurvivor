@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHP: 50
   ATK: 1
-  SPEED: 0.2
+  SPEED: 0.4
   EXP: 100
   SCORE: 900
   TYPE: 1
   PREHUB: {fileID: 4546041888521143423, guid: db1ce1d6dd3d6e24f88f34a0c2e473df, type: 3}
   BGM: {fileID: 0}
+  NAME: CatSlime

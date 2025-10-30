@@ -27,6 +27,7 @@ public class ItemPanel : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         audioSource = GetComponent<AudioSource>();
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +37,9 @@ public class ItemPanel : MonoBehaviour
         itemInfo.text = element.INFO;
         itemImage.sprite = element.SPRITE;
 
-        Vector2 endPos = rectTransform.anchoredPosition;
+        Vector2 endPos = rectTransform.anchoredPosition + new Vector2(100, -500f);
 
-        rectTransform.anchoredPosition = endPos + new Vector2(0, 800f);
+        rectTransform.anchoredPosition = endPos + new Vector2(0, 1000f);
 
         rectTransform.DOAnchorPosY(endPos.y, 0.6f)
         .SetEase(Ease.OutBack)

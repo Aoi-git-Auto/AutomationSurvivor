@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHP: 5
   ATK: 10
-  SPEED: 0.8
+  SPEED: 1.6
   EXP: 10
   SCORE: 50
   TYPE: 0
   PREHUB: {fileID: 2851784097291342598, guid: 74e9c39d45b1400408fb94fbd3d98a49, type: 3}
   BGM: {fileID: 0}
+  NAME: Skeleton

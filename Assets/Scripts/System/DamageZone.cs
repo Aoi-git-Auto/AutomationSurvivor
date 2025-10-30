@@ -22,7 +22,7 @@ public class DamageZone : MonoBehaviour
             if (damageTime > 1f)
             {
                 audioSource.PlayOneShot(poisenedSE);
-                other.gameObject.GetComponent<IEnemy>().Damage(0.5f);
+                other.gameObject.GetComponent<IEnemy>().Damage(2f);
                 damageTime = 0f;
             }
         }

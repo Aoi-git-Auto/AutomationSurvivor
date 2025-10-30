@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHP: 30
   ATK: 5
-  SPEED: 0.7
+  SPEED: 1.4
   EXP: 50
   SCORE: 700
   TYPE: 1
   PREHUB: {fileID: 4596841665176541531, guid: f9752d3afcc178e43bd43296663b45a1, type: 3}
   BGM: {fileID: 0}
+  NAME: Ghost

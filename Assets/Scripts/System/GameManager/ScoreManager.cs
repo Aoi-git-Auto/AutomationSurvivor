@@ -12,11 +12,16 @@ public class ScoreManager : MonoBehaviour
     private int currentScore;
     private float scoreRate = 1f;
 
+    [SerializeField]
+    private AudioClip enhanceSE;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         currentScore = 0;
         scoreText.text = "Score 000000000";
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void AddScore(int getScore)
@@ -44,6 +49,7 @@ public class ScoreManager : MonoBehaviour
     
     public void BoostScoreRate(float enhance)
     {
+        audioSource.PlayOneShot(enhanceSE);
         scoreRate *= enhance;
         Debug.Log("score up");
     }

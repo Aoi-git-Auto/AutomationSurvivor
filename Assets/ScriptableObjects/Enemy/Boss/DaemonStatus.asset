@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHP: 120
   ATK: 20
-  SPEED: 0.9
+  SPEED: 1.8
   EXP: 200
   SCORE: 3000
   TYPE: 2
   PREHUB: {fileID: 1675598152843906191, guid: 03cbf6dc59ad50a41890dbc01de654e2, type: 3}
   BGM: {fileID: 8300000, guid: 7112a56a88ec2b54cbdd9ac9945d49b4, type: 3}
+  NAME: Demon

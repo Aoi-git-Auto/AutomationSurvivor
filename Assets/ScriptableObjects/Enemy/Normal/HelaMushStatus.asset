@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHP: 20
   ATK: 2
-  SPEED: 0.5
+  SPEED: 1
   EXP: 5
   SCORE: 150
   TYPE: 0
   PREHUB: {fileID: 2930226351817636238, guid: 0d33327bd6f1ac748b8b21c5163b5e22, type: 3}
   BGM: {fileID: 0}
+  NAME: HealMushroom

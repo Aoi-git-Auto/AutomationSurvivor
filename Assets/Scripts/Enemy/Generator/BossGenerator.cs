@@ -10,13 +10,12 @@ public class BossGenerator : MonoBehaviour
     [SerializeField]
     private GameObject bossArrivingEffect;
     [SerializeField]
+    private float spawnBuffer = 2f;
+    [SerializeField]
     private GameObject canvas;
-    private Vector2 playerPos;
     private float currentTime = 0f;
     private float span = 40f;
-    private int rndUD;
-    private int rndLR;
-    private Vector2 enemySpwanPos;
+    private Vector2 enemySpawnPos;
     private bool inHalf = false;
     private bool inLast = false;
 
@@ -57,39 +56,47 @@ public class BossGenerator : MonoBehaviour
     
     private IEnumerator GenerateEnemy()
     {
-        playerPos = player.transform.position;
-        rndUD = Random.Range(0,2);
-        rndLR = Random.Range(0,2);
-        float rndPositiveX = Random.Range(1.0f,3.0f);
-        float rndPositiveY = Random.Range(1.0f,3.0f);
-        float rndNegativeX = Random.Range(-3.0f,-1.0f);
-        float rndNegativeY = Random.Range(-3.0f, -1.0f);
-        
-        switch(rndUD)
+        Camera camera = Camera.main;
+        float cameraHeight = camera.orthographicSize;
+        float cameraWidth = cameraHeight * camera.aspect;
+
+        Vector2 screenCenter = player.transform.position;
+
+        int side = Random.Range(0, 4);
+
+        switch (side)
         {
             case 0:
-            enemySpwanPos.y = rndPositiveY;
-            break;
+                enemySpawnPos = new Vector2(
+                    Random.Range(screenCenter.x - cameraWidth, screenCenter.x + cameraWidth),
+                    screenCenter.y + cameraHeight + spawnBuffer
+                );
+                break;
             case 1:
-            enemySpwanPos.y = rndNegativeY;
-            break;
+                enemySpawnPos = new Vector2(
+                    Random.Range(screenCenter.x - cameraWidth, screenCenter.x + cameraWidth),
+                    screenCenter.y - cameraHeight - spawnBuffer
+                );
+                break;
+            case 2:
+                enemySpawnPos = new Vector2(
+                    screenCenter.x + cameraWidth + spawnBuffer,
+                    Random.Range(screenCenter.y - cameraHeight, screenCenter.y + cameraHeight)
+                );
+                break;
+            case 3:
+                enemySpawnPos = new Vector2(
+                    screenCenter.x - cameraWidth - spawnBuffer,
+                    Random.Range(screenCenter.y - cameraHeight, screenCenter.y + cameraHeight)
+                );
+                break;
         }
-        switch(rndLR)
-        {
-            case 0:
-            enemySpwanPos.x = rndPositiveX;
-            break;
-            case 1:
-            enemySpwanPos.x = rndNegativeX;
-            break;
-        }
-        enemySpwanPos = enemySpwanPos + playerPos;
 
         int randomIndex = Random.Range(0, dataBase.enemies.Count);
         GameObject rndEnemy = dataBase.enemies[randomIndex].PREHUB;
 
         yield return new WaitForSeconds(1f);
-        var enemy = Instantiate(rndEnemy, enemySpwanPos, transform.rotation);
+        var enemy = Instantiate(rndEnemy, enemySpawnPos, transform.rotation);
         enemy.GetComponent<IEnemy>().Initialize(dataBase.enemies[randomIndex]);
     }
 }

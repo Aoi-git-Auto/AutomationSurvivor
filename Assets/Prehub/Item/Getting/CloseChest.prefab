@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,18 +118,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.07059765, y: 0.07059693}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.437}
+    oldSize: {x: 15.625, y: 13.65625}
     newSize: {x: 0.5, y: 0.437}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.437}
+  m_Size: {x: 15.701929, y: 14.038725}
   m_EdgeRadius: 0
 --- !u!114 &4083472753472137263
 MonoBehaviour:
@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8b014704ec5924ca420c2775bbdf94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestUI: {fileID: 3066443373602771617, guid: 6659f9dc172be134396925c73d098559, type: 3}
+  chestUI: {fileID: 8163680996851467789, guid: 1011f93e7d59c0a42b237989009abdfc, type: 3}

@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
-using UnityEditor.Search;
+using TMPro;
 
 public class GMScript : MonoBehaviour
 {
     public static GMScript instance;
-    private Text timerText;
+    private TMP_Text timerText;
     private GameObject gameEndPanel;
     private Text gameEndText;
     private Text scoreText;
@@ -51,7 +50,6 @@ public class GMScript : MonoBehaviour
     {
         if (inGame && timerText != null)
         {
-            timerText.text = $"{(int)currentTime}";
             currentTime -= Time.deltaTime;
             timerText.text = $"{(int)currentTime}";
             if(currentTime <= 0)
@@ -62,7 +60,7 @@ public class GMScript : MonoBehaviour
         }
     }
 
-    public void LoadUI(GameObject endPanel, Text timer, Text score, Text endText, Button re, Button esc, GameObject scManager)
+    public void LoadUI(GameObject endPanel, TMP_Text timer, Text score, Text endText, Button re, Button esc, GameObject scManager)
     {
         gameEndPanel = endPanel;
         timerText = timer;
@@ -107,14 +105,14 @@ public class GMScript : MonoBehaviour
         RectTransform buttonRectR = endRetry.GetComponent<RectTransform>();
         Vector2 endPosL = buttonRectL.anchoredPosition;
         Vector2 endPosR = buttonRectR.anchoredPosition;
-        buttonRectL.anchoredPosition = endPosL + new Vector2(0, -300);
-        buttonRectR.anchoredPosition = endPosR + new Vector2(0, -300);
+        buttonRectL.anchoredPosition = endPosL + new Vector2(0, -1000);
+        buttonRectR.anchoredPosition = endPosR + new Vector2(0, -1000);
 
         int finalscore = scoreManager.GetComponent<ScoreManager>().GetStatus();
 
         seq.Append(gameEndText.DOFade(1f, 1f))
         .AppendInterval(1f)
-        .Append(gameEndText.rectTransform.DOAnchorPosY(gameEndText.rectTransform.anchoredPosition.y + 60f, 0.6f))
+        .Append(gameEndText.rectTransform.DOAnchorPosY(gameEndText.rectTransform.anchoredPosition.y + 150f, 0.6f))
         .AppendInterval(0.3f)
         .AppendCallback(() =>
         {

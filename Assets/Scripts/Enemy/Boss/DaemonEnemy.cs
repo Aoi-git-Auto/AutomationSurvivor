@@ -14,9 +14,9 @@ public class DaemonEnemy : AbstractEnemy
     private float attackTime = 0f;
     private Animator animator;
     [SerializeField]
-    private float rushTime = 0.8f;
+    private float rushTime = 2f;
     [SerializeField]
-    private float rushSpeed = 10f;
+    private float rushSpeed = 50f;
 
     [SerializeField]
     private AudioClip dyingSE;
@@ -35,7 +35,7 @@ public class DaemonEnemy : AbstractEnemy
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
 
-        bar.InitializeHPbar(MaxHP, this.name);
+        bar.InitializeHPbar(MaxHP, enemyName);
     }
 
     private void Update()

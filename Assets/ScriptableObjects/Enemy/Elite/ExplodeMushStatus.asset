@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHP: 20
   ATK: 8
-  SPEED: 0.3
+  SPEED: 0.6
   EXP: 25
   SCORE: 300
   TYPE: 1
   PREHUB: {fileID: 3123710038026996542, guid: f35cdcf4b9b8ad9449b937a356abe222, type: 3}
   BGM: {fileID: 0}
+  NAME: ExplodeMushroom
