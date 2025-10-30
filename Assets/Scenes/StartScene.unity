@@ -698,7 +698,7 @@ MonoBehaviour:
   inGame: 0
   bossArriving: 0
   playerDieBGM: {fileID: 8300000, guid: cc3b982d41c63a8428478d72a6498692, type: 3}
-  clearBGM: {fileID: 8300000, guid: 2f35f1b7138940f4da6e5ce7ba4867a0, type: 3}
+  clearBGM: {fileID: 8300000, guid: 4ad679492956754498ffac3d00e32fd0, type: 3}
   scoreSE: {fileID: 8300000, guid: 36b511337f0953543b038b63973e616d, type: 3}
 --- !u!4 &1074730328
 Transform:

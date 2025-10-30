@@ -4574,9 +4574,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataBase: {fileID: 11400000, guid: 85dc19674dd80af4286492f05c6da5b6, type: 2}
   player: {fileID: 194584434}
-  bossArrivingEffect: {fileID: 0}
-  canvas: {fileID: 0}
-  bossArrivalSE: {fileID: 0}
 --- !u!1 &777236319
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,7 +5211,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1799330181}
   m_HandleRect: {fileID: 0}
@@ -5850,9 +5847,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataBase: {fileID: 11400000, guid: bbd779b633118ea4a999b91265c6aa31, type: 2}
   player: {fileID: 194584434}
-  bossArrivingEffect: {fileID: 0}
-  canvas: {fileID: 0}
-  bossArrivalSE: {fileID: 0}
 --- !u!1 &1376660936
 GameObject:
   m_ObjectHideFlags: 0
@@ -6650,7 +6644,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1329128706}
   m_HandleRect: {fileID: 0}
