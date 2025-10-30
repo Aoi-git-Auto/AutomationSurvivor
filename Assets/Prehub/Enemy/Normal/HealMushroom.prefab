@@ -195,4 +195,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expPrehub: {fileID: 2021388790842283694, guid: d5307df2c0cf10f409f25a8f657ae3b1, type: 3}
   hitEffect: {fileID: 6756226923323038359, guid: 28212569ef39298468139300f055fcae, type: 3}
+  chestPrehub: {fileID: 2478843595807617506, guid: 7b0d24e51d8e58e458f64d44bd7ea069, type: 3}
   healItemPrehub: {fileID: 8243217795765191869, guid: 6c1f24d9a62d1244a9ccc268f29847b6, type: 3}

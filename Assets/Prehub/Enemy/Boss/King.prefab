@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expPrehub: {fileID: 2021388790842283694, guid: d5307df2c0cf10f409f25a8f657ae3b1, type: 3}
   hitEffect: {fileID: 6756226923323038359, guid: 28212569ef39298468139300f055fcae, type: 3}
+  chestPrehub: {fileID: 2478843595807617506, guid: 7b0d24e51d8e58e458f64d44bd7ea069, type: 3}
   warpGatePrehub: {fileID: 663673949974933537, guid: f44e545d519431042a8e0ee9c9ce7a11, type: 3}
   beamPrehub: {fileID: 5853608259882519462, guid: e604d15d75f774244a88aa7ec1ed8916, type: 3}
   itemEffectPrehub: {fileID: 8014179334870704806, guid: e4156937a8619284798fec69ec0f21e8, type: 3}
