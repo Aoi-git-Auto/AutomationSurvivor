@@ -17,12 +17,16 @@ public class PlayerController : MonoBehaviour,IDamageable
     public float Health => currentHP;
     private bool invincibility;
     private bool isFlashing;
+    private bool canMove;
+    private Animator animator;
     private Vector2 inputAxis;
     [SerializeField]
     private AudioClip damagedSE;
     [SerializeField]
     private AudioClip dyingSE;
     private AudioSource audioSource;
+    private BoxCollider2D boxCollider;
+    private Animator_Controller controller;
 
     [SerializeField]
     private AudioClip guardSE;
@@ -32,6 +36,9 @@ public class PlayerController : MonoBehaviour,IDamageable
     private GameObject shiledPrehub;
     private bool isGuaded = false;
     private int damagedCount = 0;
+
+    [SerializeField]
+    private GameObject playerDiePrehub;
 
     void Start()
     {
@@ -43,15 +50,20 @@ public class PlayerController : MonoBehaviour,IDamageable
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        controller = GetComponent<Animator_Controller>();
         currentHP = statusdata.MAXHP;
         speed = statusdata.SPEED;
         invincibility = false;
         isFlashing = false;
+        canMove = true;
     }
 
     // Update is called once per frameb
     void Update()
     {
+        if (!canMove) return;
         hpSlider.maxValue = statusdata.MAXHP;
         inputAxis.x = Input.GetAxisRaw("Horizontal");
         inputAxis.y = Input.GetAxisRaw("Vertical");
@@ -65,8 +77,10 @@ public class PlayerController : MonoBehaviour,IDamageable
             }
         }
     }
+
     void FixedUpdate()
     {
+        if (!canMove) return;
         rb.velocity = inputAxis.normalized * speed;
     }
 
@@ -97,9 +111,9 @@ public class PlayerController : MonoBehaviour,IDamageable
                 }
                 if (currentHP <= 0)
                 {
-                    Die();
+                    StartCoroutine(Die());
                 }
-                if (!isFlashing)
+                else if (!isFlashing)
                 {
                     StartCoroutine(flashSprite());
                 }
@@ -127,11 +141,20 @@ public class PlayerController : MonoBehaviour,IDamageable
         Debug.Log("Speed UP!");
     }
 
-    public void Die()
+    private IEnumerator Die()
     {
+        canMove = false;
+        boxCollider.enabled = false;
+        animator.enabled = false;
+        controller.enabled = false;
         spritePlayer.enabled = false;
-        hpSlider.enabled = false;
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
         audioSource.PlayOneShot(dyingSE);
+        Instantiate(playerDiePrehub, transform.position, Quaternion.identity);
+        yield return new WaitForSecondsRealtime(1f);
         GMScript.instance.GameEnd();
     }
 
