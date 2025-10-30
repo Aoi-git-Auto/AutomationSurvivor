@@ -14,7 +14,7 @@ public class Animator_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale == 0) return;
+        if (Time.timeScale == 0 || !animator.enabled) return;
         Vector2 vector = new Vector2(
             (int)Input.GetAxisRaw("Horizontal"),
             (int)Input.GetAxisRaw("Vertical"));

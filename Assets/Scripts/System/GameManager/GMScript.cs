@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEditor.Search;
 
 public class GMScript : MonoBehaviour
 {
@@ -17,6 +18,15 @@ public class GMScript : MonoBehaviour
     public bool inGame;
     public bool bossArriving;
     private bool isDead = true;
+
+    [SerializeField]
+    private AudioClip playerDieBGM;
+    [SerializeField]
+    private AudioClip clearBGM;
+    [SerializeField]
+    private AudioClip scoreSE;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,6 +44,7 @@ public class GMScript : MonoBehaviour
     void Start()
     {
         AudioManager.instance.PlayTitleBGM();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -71,11 +82,13 @@ public class GMScript : MonoBehaviour
 
         if (isDead)
         {
+            AudioManager.instance.PlayBGM(playerDieBGM);
             gameEndText.text = "You Died...";
             gameEndText.color = Color.red;
         }
         else
         {
+            AudioManager.instance.PlayBGM(clearBGM);
             gameEndText.text = "You Survived!";
             gameEndText.color = Color.yellow;
         }
@@ -105,6 +118,7 @@ public class GMScript : MonoBehaviour
         .AppendInterval(0.3f)
         .AppendCallback(() =>
         {
+            audioSource.PlayOneShot(scoreSE);
             scoreText.text = finalscore.ToString();
         })
         .AppendInterval(1.5f)
