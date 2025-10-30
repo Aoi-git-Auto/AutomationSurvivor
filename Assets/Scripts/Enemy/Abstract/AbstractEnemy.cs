@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,15 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected GameObject expPrehub;
     [SerializeField]
     protected GameObject hitEffect;
+    [SerializeField]
+    private GameObject chestPrehub;
     protected float enemyATK;
     protected float MaxHP;
     protected float currentHP;
     protected int enemyEXP;
     protected float speed;
     protected int score;
+    protected Type enemyType;
     protected bool canMove = true;
     protected AudioClip bgm;
     protected Rigidbody2D rb;
@@ -67,12 +71,30 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         Destroy(this.gameObject);
         scoreManager.GetComponent<ScoreManager>().AddScore(score);
         DropEXP();
+        DropChest();
     }
 
     protected void DropEXP()
     {
         var exp = Instantiate(expPrehub, new Vector2(transform.position.x + 0.1f, transform.position.y), transform.rotation);
         exp.GetComponent<ExpOrbScript>().GetExpAmount(enemyEXP);
+    }
+
+    protected void DropChest()
+    {
+        if (enemyType == Type.BOSS)
+        {
+            Instantiate(chestPrehub, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            System.Random random = new System.Random();
+            int randomIndex = random.Next(1, 100);
+            if(randomIndex >= 98)
+            {
+                Instantiate(chestPrehub, transform.position, Quaternion.identity);
+            }
+        }
     }
     
     protected void Hit(GameObject target)
@@ -105,6 +127,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         enemyEXP = initialStatus.EXP;
         speed = initialStatus.SPEED;
         score = initialStatus.SCORE;
+        enemyType = initialStatus.TYPE;
         if(initialStatus.BGM != null)
         {
             bgm = initialStatus.BGM;

@@ -100,6 +100,7 @@ public class DaemonEnemy : AbstractEnemy
             AudioManager.instance.PlayinGameBGM();
             GMScript.instance.bossArriving = false;
             Die();
-        });
+        })
+        .SetLink(gameObject);
     }
 }

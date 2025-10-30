@@ -56,14 +56,7 @@ public class EXPManager : MonoBehaviour
         audioSource.PlayOneShot(levelUpSE);
         yield return new WaitForSeconds(0.5f);
         LevelUpText.enabled = false;
-        foreach (GameObject panel in itemPanels)
-        {
-            var panelPrehub = Instantiate(panel, canvas.transform);
-            keepPanels.Add(panelPrehub);
-            ItemPanel item = panelPrehub.GetComponent<ItemPanel>();
-            item.OnSelected += ClosePanel;
-        }
-        Time.timeScale = 0;
+        OpenPanel();
     }
 
     public void AddEXP(int get)
@@ -82,7 +75,7 @@ public class EXPManager : MonoBehaviour
             StartCoroutine(LevelUP());
         }
     }
-    
+
     private void ClosePanel()
     {
         foreach (GameObject panel in keepPanels)
@@ -91,12 +84,25 @@ public class EXPManager : MonoBehaviour
             seq.Append(panel.transform.DOScale(1.05f, 0.1f).SetEase(Ease.OutBack))
             .Append(panel.transform.DOScale(0f, 0.3f).SetEase(Ease.InBack))
             .SetLink(panel)
-            .OnComplete(() => {
+            .OnComplete(() =>
+            {
                 Destroy(panel);
                 keepPanels.Remove(panel);
             })
             .SetUpdate(true);
         }
         Time.timeScale = 1;
+    }
+    
+    public void OpenPanel()
+    {
+        foreach (GameObject panel in itemPanels)
+        {
+            var panelPrehub = Instantiate(panel, canvas.transform);
+            keepPanels.Add(panelPrehub);
+            ItemPanel item = panelPrehub.GetComponent<ItemPanel>();
+            item.OnSelected += ClosePanel;
+        }
+        Time.timeScale = 0;
     }
 }

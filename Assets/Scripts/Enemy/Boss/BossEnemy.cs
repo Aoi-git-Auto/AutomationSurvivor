@@ -54,6 +54,7 @@ public class BossEnemy : AbstractEnemy
             AudioManager.instance.PlayinGameBGM();
             GMScript.instance.bossArriving = false;
             Die();
-        });
+        })
+        .SetLink(gameObject);
     }
 }

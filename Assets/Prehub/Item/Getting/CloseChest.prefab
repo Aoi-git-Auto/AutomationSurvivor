@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7373796387128643215}
   - component: {fileID: 7661881352584713911}
   - component: {fileID: 3310416780249316674}
-  - component: {fileID: 8979812739690393814}
   - component: {fileID: 4083472753472137263}
   m_Layer: 0
   m_Name: CloseChest
@@ -132,33 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.437}
   m_EdgeRadius: 0
---- !u!50 &8979812739690393814
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2478843595807617506}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &4083472753472137263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8b014704ec5924ca420c2775bbdf94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChestUI: {fileID: 0}
-  conffeti: {fileID: 4486895230580058996, guid: 954dd26e5734cc24589954e0cada76b9, type: 3}
-  imageDrone: {fileID: 21300000, guid: deaa2017d57fa244a9c231e39665ef98, type: 3}
-  imageAnpoule: {fileID: 21300000, guid: 4383fe67fb26d2a48a78efbaef5c8445, type: 3}
+  chestUI: {fileID: 3066443373602771617, guid: 6659f9dc172be134396925c73d098559, type: 3}

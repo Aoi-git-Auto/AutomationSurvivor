@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expPrehub: {fileID: 2021388790842283694, guid: d5307df2c0cf10f409f25a8f657ae3b1, type: 3}
   hitEffect: {fileID: 6756226923323038359, guid: 28212569ef39298468139300f055fcae, type: 3}
+  chestPrehub: {fileID: 2478843595807617506, guid: 7b0d24e51d8e58e458f64d44bd7ea069, type: 3}
   hpBar: {fileID: 7229907432046488897, guid: 73e828ec2e99d924da88d00450e25d70, type: 3}
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
 --- !u!82 &5331612051114651164
