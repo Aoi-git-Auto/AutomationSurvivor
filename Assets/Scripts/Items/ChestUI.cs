@@ -53,6 +53,7 @@ public class ChestUI : MonoBehaviour
             expManager.GetComponent<EXPManager>().OpenPanel();
             Destroy(this.gameObject);
         })
-        .SetUpdate(true); 
+        .SetUpdate(true)
+        .SetLink(gameObject); 
     }
 }

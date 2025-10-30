@@ -7,10 +7,6 @@ public class EnemyGenerator : MonoBehaviour
     private EnemyDataBase dataBase;
     [SerializeField]
     private GameObject player;
-    [SerializeField]
-    private GameObject bossArrivingEffect;
-    [SerializeField]
-    private GameObject canvas;
     private Vector2 playerPos;
     private float currentTime = 0f;
     private float span;
@@ -19,10 +15,6 @@ public class EnemyGenerator : MonoBehaviour
     private Vector2 enemySpwanPos;
     private bool inHalf = false;
     private bool inLast = false;
-
-    [SerializeField]
-    private AudioClip bossArrivalSE;
-    private AudioSource audioSource;
 
     void Start()
     {

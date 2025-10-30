@@ -152,6 +152,7 @@ public class KingEnemy : AbstractEnemy
             AudioManager.instance.PlayinGameBGM();
             GMScript.instance.bossArriving = false;
             Die();
-        });
+        })
+        .SetLink(gameObject);
     }
 }
