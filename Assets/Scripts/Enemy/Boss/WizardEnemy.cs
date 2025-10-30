@@ -37,7 +37,7 @@ public class WizardEnemy : AbstractEnemy
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
 
-        bar.InitializeHPbar(MaxHP, this.name);
+        bar.InitializeHPbar(MaxHP, enemyName);
     }
 
     private void Update()

@@ -26,7 +26,7 @@ public class BossEnemy : AbstractEnemy
         hp = Instantiate(hpBar, canvas.transform);
         bar = hp.GetComponent<BossHPBarContoroller>();
 
-        bar.InitializeHPbar(MaxHP, this.name);
+        bar.InitializeHPbar(MaxHP, enemyName);
     }
 
     public override void Damage(float damage)

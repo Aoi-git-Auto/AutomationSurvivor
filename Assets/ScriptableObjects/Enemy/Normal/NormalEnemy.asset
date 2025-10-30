@@ -20,3 +20,4 @@ MonoBehaviour:
   TYPE: 0
   PREHUB: {fileID: 3522901147240844368, guid: d07b40f54d1aa034e9a299eb76483ab3, type: 3}
   BGM: {fileID: 0}
+  NAME: Slime

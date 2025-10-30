@@ -20,3 +20,4 @@ MonoBehaviour:
   TYPE: 1
   PREHUB: {fileID: 4596841665176541531, guid: f9752d3afcc178e43bd43296663b45a1, type: 3}
   BGM: {fileID: 0}
+  NAME: Ghost

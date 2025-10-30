@@ -17,6 +17,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected int enemyEXP;
     protected float speed;
     protected int score;
+    protected String enemyName;
     protected Type enemyType;
     protected bool canMove = true;
     protected AudioClip bgm;
@@ -128,6 +129,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         speed = initialStatus.SPEED;
         score = initialStatus.SCORE;
         enemyType = initialStatus.TYPE;
+        enemyName = initialStatus.NAME;
         if(initialStatus.BGM != null)
         {
             bgm = initialStatus.BGM;

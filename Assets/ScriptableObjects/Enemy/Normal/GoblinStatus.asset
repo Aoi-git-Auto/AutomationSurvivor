@@ -20,3 +20,4 @@ MonoBehaviour:
   TYPE: 0
   PREHUB: {fileID: 3729981559725108488, guid: 3369ea99e0fab4d4593017253fe6fb9b, type: 3}
   BGM: {fileID: 0}
+  NAME: Goblin

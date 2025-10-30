@@ -8,7 +8,4 @@ public class StatusData : ScriptableObject
     public float ATK;
     public float SPEED;
     public float NockBack;
-    public float SPAN;
-    public int EXP;
-    public bool BOSS;
 }

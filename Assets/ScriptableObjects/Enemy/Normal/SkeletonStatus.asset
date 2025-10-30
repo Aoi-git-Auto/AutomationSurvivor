@@ -20,3 +20,4 @@ MonoBehaviour:
   TYPE: 0
   PREHUB: {fileID: 2851784097291342598, guid: 74e9c39d45b1400408fb94fbd3d98a49, type: 3}
   BGM: {fileID: 0}
+  NAME: Skeleton

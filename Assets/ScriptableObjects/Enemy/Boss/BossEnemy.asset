@@ -20,3 +20,4 @@ MonoBehaviour:
   TYPE: 2
   PREHUB: {fileID: 1362594501308954412, guid: 80b3141249055ac46a8794709680a731, type: 3}
   BGM: {fileID: 8300000, guid: 7112a56a88ec2b54cbdd9ac9945d49b4, type: 3}
+  NAME: DevilSlime

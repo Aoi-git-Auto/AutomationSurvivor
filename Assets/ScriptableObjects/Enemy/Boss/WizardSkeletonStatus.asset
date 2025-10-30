@@ -20,3 +20,4 @@ MonoBehaviour:
   TYPE: 2
   PREHUB: {fileID: 7600249771878481470, guid: 76f5ec6e19a36174e9afcc42cec5dd06, type: 3}
   BGM: {fileID: 8300000, guid: 7112a56a88ec2b54cbdd9ac9945d49b4, type: 3}
+  NAME: WizardSkeleton

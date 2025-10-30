@@ -20,3 +20,4 @@ MonoBehaviour:
   TYPE: 2
   PREHUB: {fileID: 543103820340699142, guid: 12c8a0572a0162349a059a3b8bf257b4, type: 3}
   BGM: {fileID: 8300000, guid: 93b353032e1d24b4a9ee3db90e9d375a, type: 3}
+  NAME: King
