@@ -1,0 +1,7 @@
+public interface IEnemy
+{
+    public void Damage(float damage);
+    public void KnockBack(float knockback);
+
+    public void Initialize(EnemyStatus intialStatus);
+}
