@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class EXPManager : MonoBehaviour
 {
@@ -31,10 +33,14 @@ public class EXPManager : MonoBehaviour
     private float growth = 1.2f;
     [SerializeField]
     private int baseExp = 100;
+
+    private PlayerInput playerInput;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        playerInput = FindObjectOfType<PlayerInput>();
         currentExp = 0;
         currentLv = 1;
         NeedExp = baseExp * (int)Mathf.Pow(growth, currentLv - 1);
@@ -91,6 +97,10 @@ public class EXPManager : MonoBehaviour
             })
             .SetUpdate(true);
         }
+        if(playerInput != null)
+        {
+            playerInput.SwitchCurrentActionMap("Player");
+        }
         Time.timeScale = 1;
     }
     
@@ -102,6 +112,12 @@ public class EXPManager : MonoBehaviour
             keepPanels.Add(panelPrehub);
             ItemPanel item = panelPrehub.GetComponent<ItemPanel>();
             item.OnSelected += ClosePanel;
+        }
+        if(playerInput != null)
+        {
+            playerInput.SwitchCurrentActionMap("UI");
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(keepPanels[0].GetComponentInChildren<Button>().gameObject);
         }
         Time.timeScale = 0;
     }

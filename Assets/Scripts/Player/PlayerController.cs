@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour,IDamageable
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour,IDamageable
     [SerializeField] 
     private Slider hpSlider;
     private Rigidbody2D rb;
+    private PlayerInput playerInput;
     private float currentHP;
     public float Health => currentHP;
     private bool invincibility;
@@ -43,7 +45,21 @@ public class PlayerController : MonoBehaviour,IDamageable
     private int damagedCount = 0;
 
     [SerializeField]
+    private SceneController sceneController;
+
+    [SerializeField]
     private GameObject playerDiePrehub;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody2D>();
+        playerInput = GetComponent<PlayerInput>();
+        spritePlayer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        controller = GetComponent<Animator_Controller>();
+    }
 
     void Start()
     {
@@ -52,12 +68,10 @@ public class PlayerController : MonoBehaviour,IDamageable
             hpSlider.maxValue = statusdata.MAXHP;
             hpSlider.value = statusdata.MAXHP;
         }
-        audioSource = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody2D>();
-        spritePlayer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        controller = GetComponent<Animator_Controller>();
+        if (controller != null)
+        {
+            controller.SetStateToAnimator(null);
+        }
         currentHP = statusdata.MAXHP;
         speed = statusdata.SPEED;
         invincibility = false;
@@ -65,13 +79,42 @@ public class PlayerController : MonoBehaviour,IDamageable
         canMove = true;
     }
 
+    private void OnEnable()
+    {
+        playerInput.actions["Move"].performed += OnMove;
+        playerInput.actions["Move"].canceled += OnMove;
+        playerInput.actions["Pause"].performed += OnPause;
+    }
+
+    private void OnDisable()
+    {
+        playerInput.actions["Move"].performed -= OnMove;
+        playerInput.actions["Move"].canceled -= OnMove;
+        playerInput.actions["Pause"].performed -= OnPause;
+    }
+
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        inputAxis = context.ReadValue<Vector2>();
+        if(animator != null)
+        {
+            controller.SetStateToAnimator(inputAxis != Vector2.zero ? inputAxis : (Vector2?)null);
+        }
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        if(context.performed && sceneController != null)
+        {
+            sceneController.Pause();
+        }
+    }
+
     // Update is called once per frameb
     void Update()
     {
         if (!canMove) return;
         hpSlider.maxValue = statusdata.MAXHP;
-        inputAxis.x = Input.GetAxisRaw("Horizontal");
-        inputAxis.y = Input.GetAxisRaw("Vertical");
         if (invincibility)
         {
             damageTime += Time.deltaTime;
@@ -183,7 +226,7 @@ public class PlayerController : MonoBehaviour,IDamageable
         spritePlayer.enabled = true;
         isFlashing = false;
     }
-    
+
     public void SetShiled()
     {
         isGuaded = true;

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SceneController : MonoBehaviour
 {
@@ -17,6 +19,10 @@ public class SceneController : MonoBehaviour
     private GameObject pausePanel;
     private bool inPause;
 
+    private PlayerInput playerInput;
+    [SerializeField]
+    private GameObject pauseFirstButton;
+
     [SerializeField]
     private GameObject loadingCanvas;
     [SerializeField]
@@ -25,6 +31,7 @@ public class SceneController : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        playerInput = FindObjectOfType<PlayerInput>();
     }
 
     void Start()
@@ -36,15 +43,7 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
-    }
-
-    private void Pause()
+    public void Pause()
     {
         if (!inPause)
         {
@@ -64,6 +63,12 @@ public class SceneController : MonoBehaviour
             inPause = true;
             Time.timeScale = 0;
             pausePanel.SetActive(true);
+            if(playerInput != null)
+            {
+                playerInput.SwitchCurrentActionMap("UI");
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+            }
         }
     }
 
@@ -75,6 +80,10 @@ public class SceneController : MonoBehaviour
             inPause = false;
             Time.timeScale = 1;
             pausePanel.SetActive(false);
+            if(playerInput != null)
+            {
+                playerInput.SwitchCurrentActionMap("Player");
+            }
         }
     }
 
@@ -119,6 +128,7 @@ public class SceneController : MonoBehaviour
         GMScript.instance.currentTime = time;
         GMScript.instance.bossArriving = false;
         Time.timeScale = 1;
+        playerInput.SwitchCurrentActionMap("Player");
         async.allowSceneActivation = true;
     }
 
@@ -142,6 +152,7 @@ public class SceneController : MonoBehaviour
 
         AudioManager.instance.PlayTitleBGM();
         GMScript.instance.inGame = false;
+        Time.timeScale = 1;
         async.allowSceneActivation = true;
     }
 }
