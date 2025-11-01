@@ -36,15 +36,7 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
-    }
-
-    private void Pause()
+    public void Pause()
     {
         if (!inPause)
         {
