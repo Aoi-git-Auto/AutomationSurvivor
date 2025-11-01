@@ -295,6 +295,6 @@ MonoBehaviour:
   chestPrehub: {fileID: 2478843595807617506, guid: 7b0d24e51d8e58e458f64d44bd7ea069, type: 3}
   hpBar: {fileID: 3085432065975460977, guid: 6f8b69c732739ac41ad0f01e6923399a, type: 3}
   rushTime: 0.4
-  rushSpeed: 8
+  rushSpeed: 20
   dyingSE: {fileID: 8300000, guid: e91821122088eb9489ca29f27ebb78ec, type: 3}
   rushSE: {fileID: 8300000, guid: 0ff0f2f0a29680b4dbfbc7c3c168c619, type: 3}
