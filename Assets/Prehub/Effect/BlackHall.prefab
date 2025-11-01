@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 403726489
-  m_SortingLayer: 4
+  m_SortingLayerID: 455038405
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 457601957, guid: 646f45e1b6c198b49958e7df6b2136b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,9 +141,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0554623, y: 0.011384249}
+  m_Offset: {x: 0.045838833, y: 0.011384249}
   serializedVersion: 2
-  m_Radius: 2.0311027
+  m_Radius: 3.3302312
 --- !u!114 &6345423296986739338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f37c7d4994068f14c83fa6c675871b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullForce: 5
+  pullForce: 150
   hallSE: {fileID: 8300000, guid: d8f19dc6b7b856c49a76cbda370e5431, type: 3}
 --- !u!82 &-1651702541980711396
 AudioSource:
