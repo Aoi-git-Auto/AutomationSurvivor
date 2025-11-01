@@ -3,7 +3,7 @@ using UnityEngine;
 public class BlackHall : MonoBehaviour
 {
     [SerializeField]
-    private float pullForce = 5f;
+    private float pullForce;
 
     [SerializeField]
     private AudioClip hallSE;
@@ -11,7 +11,7 @@ public class BlackHall : MonoBehaviour
 
     void Start()
     {
-        Destroy(this.gameObject, 2f);
+        Destroy(this.gameObject, 4f);
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(hallSE);
     }
