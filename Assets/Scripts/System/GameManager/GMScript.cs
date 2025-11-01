@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class GMScript : MonoBehaviour
 {
@@ -25,6 +27,9 @@ public class GMScript : MonoBehaviour
     [SerializeField]
     private AudioClip scoreSE;
     private AudioSource audioSource;
+
+    private GameObject gameEndButton;
+    private PlayerInput playerInput;
 
     // Start is called before the first frame update
     void Awake()
@@ -99,7 +104,16 @@ public class GMScript : MonoBehaviour
 
         gameEndPanel.SetActive(true);
         gameEndPanel.transform.SetAsLastSibling();
+        playerInput = FindObjectOfType<PlayerInput>();
         Sequence seq = DOTween.Sequence();
+
+        if (playerInput != null)
+        {
+            playerInput.SwitchCurrentActionMap("UI");
+            gameEndButton = gameEndPanel.GetComponentInChildren<Button>().gameObject;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(gameEndButton);
+        }
 
         RectTransform buttonRectL = endExit.GetComponent<RectTransform>();
         RectTransform buttonRectR = endRetry.GetComponent<RectTransform>();
