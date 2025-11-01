@@ -14,6 +14,8 @@ https://drive.google.com/drive/folders/10717sQ_udE7D9kLg78ssyouIiMH0YQOr?usp=dri
 
 ## 更新記録
 10/31 InitialVersion完成
+<br>
+11/2 更新 ver.1.0.1
 
 ## ご意見・ご要望について
 form作成中…
