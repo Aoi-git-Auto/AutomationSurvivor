@@ -776,6 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataBase: {fileID: 11400000, guid: d5b318389969b3e43adfb08fbecdb615, type: 2}
+  kingDataBase: {fileID: 11400000, guid: 2c01ffa87d178214f91ca41de62aee5f, type: 2}
   player: {fileID: 194584434}
   bossArrivingEffect: {fileID: 2229786273771239491, guid: 0173704ed3c284c4f806db84ec53f8a2, type: 3}
   spawnBuffer: 2
