@@ -7,7 +7,8 @@ public enum Type
 {
     NORMAL,
     ELITE,
-    BOSS
+    BOSS,
+    KING
 };
 
 [CreateAssetMenu(menuName = "Data/Create EnemyData")]

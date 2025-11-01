@@ -142,7 +142,9 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: 5bc2809b15d916c4ea0a4aa716d9d46f, type: 2}
+  - {fileID: -944628639613478452, guid: 9ab82f20cfff1a44a91053c255201821, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -163,7 +165,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.Mytest-2DRPG
+    Standalone: com.DefaultCompany.Automationsurvivor
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -734,7 +736,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 18a5faa6-40a2-4f88-9d2e-fb98eba1bc02
   framebufferDepthMemorylessMode: 0

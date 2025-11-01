@@ -6,6 +6,8 @@ public class BossGenerator : MonoBehaviour
     [SerializeField]
     private EnemyDataBase dataBase;
     [SerializeField]
+    private EnemyDataBase kingDataBase;
+    [SerializeField]
     private GameObject player;
     [SerializeField]
     private GameObject bossArrivingEffect;
@@ -18,6 +20,8 @@ public class BossGenerator : MonoBehaviour
     private Vector2 enemySpawnPos;
     private bool inHalf = false;
     private bool inLast = false;
+    private int randomIndex;
+    private GameObject rndEnemy;
 
     [SerializeField]
     private AudioClip bossArrivalSE;
@@ -91,12 +95,33 @@ public class BossGenerator : MonoBehaviour
                 );
                 break;
         }
-
-        int randomIndex = Random.Range(0, dataBase.enemies.Count);
-        GameObject rndEnemy = dataBase.enemies[randomIndex].PREHUB;
-
-        yield return new WaitForSeconds(1f);
-        var enemy = Instantiate(rndEnemy, enemySpawnPos, transform.rotation);
-        enemy.GetComponent<IEnemy>().Initialize(dataBase.enemies[randomIndex]);
+        if (GMScript.instance.currentTime > 150f)
+        {
+            randomIndex = Random.Range(0, dataBase.enemies.Count);
+            rndEnemy = dataBase.enemies[randomIndex].PREHUB;
+            yield return new WaitForSeconds(1f);
+            var enemy = Instantiate(rndEnemy, enemySpawnPos, transform.rotation);
+            enemy.GetComponent<IEnemy>().Initialize(dataBase.enemies[randomIndex]);
+        }
+        else
+        {
+            int randomBoss = Random.Range(1, 100);
+            if (randomBoss > 70)
+            {
+                randomIndex = Random.Range(0, kingDataBase.enemies.Count);
+                rndEnemy = kingDataBase.enemies[randomIndex].PREHUB;
+                yield return new WaitForSeconds(1f);
+                var enemy = Instantiate(rndEnemy, enemySpawnPos, Quaternion.identity);
+                enemy.GetComponent<IEnemy>().Initialize(kingDataBase.enemies[randomIndex]);
+            }
+            else
+            {
+                randomIndex = Random.Range(0, dataBase.enemies.Count);
+                rndEnemy = dataBase.enemies[randomIndex].PREHUB;
+                yield return new WaitForSeconds(1f);
+                var enemy = Instantiate(rndEnemy, enemySpawnPos, Quaternion.identity);
+                enemy.GetComponent<IEnemy>().Initialize(dataBase.enemies[randomIndex]);
+            }
+        }
     }
 }

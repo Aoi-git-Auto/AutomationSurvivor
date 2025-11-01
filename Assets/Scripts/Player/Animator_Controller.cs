@@ -8,11 +8,25 @@ public class Animator_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+    }
+
+    public void SetStateToAnimator(Vector2? vector)
+    {
+        if (Time.timeScale == 0 || !animator.enabled) return;
+
+        if(!vector.HasValue)
+        {
+            this.animator.speed = 0.0f;
+            return ;
+        }
+        animator.speed = 1.0f;
+        animator.SetFloat("InputX",vector.Value.x);
+        animator.SetFloat("InputY",vector.Value.y);
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (Time.timeScale == 0 || !animator.enabled) return;
         Vector2 vector = new Vector2(
@@ -38,5 +52,5 @@ public class Animator_Controller : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.DownArrow))  return Vector2.down;
         if(Input.GetKeyDown(KeyCode.RightArrow)) return Vector2.right;
         return null;
-    }
+    }*/
 }

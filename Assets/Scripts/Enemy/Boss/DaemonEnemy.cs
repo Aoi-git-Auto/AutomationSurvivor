@@ -14,9 +14,9 @@ public class DaemonEnemy : AbstractEnemy
     private float attackTime = 0f;
     private Animator animator;
     [SerializeField]
-    private float rushTime = 2f;
+    private float rushTime ;
     [SerializeField]
-    private float rushSpeed = 50f;
+    private float rushSpeed;
 
     [SerializeField]
     private AudioClip dyingSE;
