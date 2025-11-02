@@ -18,6 +18,7 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     private GameObject pausePanel;
     private bool inPause;
+    private bool isLoading;
 
     private PlayerInput playerInput;
     [SerializeField]
@@ -41,6 +42,7 @@ public class SceneController : MonoBehaviour
             pausePanel.SetActive(false);
             inPause = false;
         }
+        isLoading = false;
     }
 
     public void Pause()
@@ -89,18 +91,27 @@ public class SceneController : MonoBehaviour
 
     public void OnGame()
     {
+        if (isLoading) return;
+        isLoading = true;
+        EventSystem.current.SetSelectedGameObject(null);
         audioSource.PlayOneShot(startSE);
         StartCoroutine(GameStart());
     }
 
     public void OnRetry()
     {
+        if (isLoading) return;
+        isLoading = true;
+        EventSystem.current.SetSelectedGameObject(null);
         audioSource.PlayOneShot(startSE);
         StartCoroutine(GameStart());
     }
 
     public void OnExit()
     {
+        if (isLoading) return;
+        isLoading = true;
+        EventSystem.current.SetSelectedGameObject(null);
         audioSource.PlayOneShot(startSE);
         StartCoroutine(GameExit());
     }
