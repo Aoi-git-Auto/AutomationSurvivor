@@ -109,14 +109,14 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected IEnumerator StopKnockBack(float delay)
     {
         yield return new WaitForSeconds(delay);
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 
     public void KnockBack(float knockBack)
     {
         if (!canMove) return;
         Vector2 directrion = (transform.position - playerPos).normalized;
-        rb.velocity = directrion * knockBack;
+        rb.linearVelocity = directrion * knockBack;
         StartCoroutine(StopKnockBack(0.5f));
     }
 
