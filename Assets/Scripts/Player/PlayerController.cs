@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour,IDamageable
     void FixedUpdate()
     {
         if (!canMove) return;
-        rb.velocity = inputAxis.normalized * speed;
+        rb.linearVelocity = inputAxis.normalized * speed;
     }
 
     public void Damage(float damage)
@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour,IDamageable
         animator.enabled = false;
         controller.enabled = false;
         spritePlayer.enabled = false;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         foreach(Transform child in transform)
         {
             child.gameObject.SetActive(false);
