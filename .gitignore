@@ -87,3 +87,4 @@ crashlytics-build.properties
 .vscode/
 Assets/Plugins/Demigiant/
 Assets/Resources/DOTweenSettings.asset
+*.slnx
